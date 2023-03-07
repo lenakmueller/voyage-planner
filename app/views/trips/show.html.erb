@@ -1,3 +1,4 @@
+<%= link_to "Back to trips", trips_path %>
 <h1><%= @trip.title %></h1>
 <p><span> <%= @trip.departure %> </span> - <span><%= @trip.return_day %> </span></p>
 <p>Notes: <%= @trip.notes %></p>
@@ -8,7 +9,7 @@
     trips_path(@trip),
     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
   %>
-  <%#= link_to "Update trip", edit_trip_path(@trip) %>
+  <%= link_to "Update trip", edit_trip_path(@trip) %>
 </div>
 
 <div style="width: 100%; height: 600px;"
