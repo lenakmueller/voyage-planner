@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 id="nametag">Hi <%#= @user.first_name %></h1>
+  <h1 id="nametag">Hi <%= @user.first_name %>!</h1>
 
   <div id="search" class="search d-flex justify-content-center align-items-center">
     <%= form_with url: trips_path, method: :get, class: "d-flex form-search" do %>
@@ -20,7 +20,7 @@
       <% end %>
     </ul>
 
-    <h2> Previous trips </h2>
+    <h2> Your previous trips </h2>
     <ul>
       <% @previous.each do |trip| %>
         <li><%= trip.title %></li>
