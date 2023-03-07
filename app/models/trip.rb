@@ -3,7 +3,7 @@ class Trip < ApplicationRecord
   has_many :transportations
   has_many :accommodations
   has_many :activities
-  # has_many_attached :photos
+  has_many_attached :photos
 
   validates :title, :location, :departure, :return_day, presence: true
 
