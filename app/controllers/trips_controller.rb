@@ -1,15 +1,15 @@
 class TripsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_trip, only: %i[edit update]
 
   def index
+    @user = current_user
     if params[:query].present?
-      @trips = current_user.Trip.search_by_title(params[:query])
+      @trips = Trip.where(user: current_user).search_by_title_and_location(params[:query])
     else
-      @trips = current_user.trips.all
+      @trips = Trip.where(user: current_user)
     end
   end
-
-    # @trips = current_user.trips.all
 
   def new
     @trip = Trip.new
