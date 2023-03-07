@@ -1,8 +1,23 @@
-<h1>Voyager Trips</h1>
+<%# <h1 id="nametag">Hi, <%= @user.first_name %></h1> %>
+
+<div class="container">
+
+<div id="search" class="search d-flex justify-content-center align-items-center">
+  <%= form_with url: trips_path, method: :get, class: "d-flex form-search" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control-search",
+      placeholder: "Search trips"
+    %>
+    <%= submit_tag "", class: "btn-search" %>
+    <%# <i class="fa-solid fa-magnifying-glass"></i> %>
+  <% end %>
+</div>
+</div>
+
 
 <ul>
   <% @trips.each do |trip| %>
     <li><%= trip.title %></li>
   <% end %>
 </ul>
-
