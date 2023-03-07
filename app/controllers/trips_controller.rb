@@ -9,6 +9,9 @@ class TripsController < ApplicationController
     else
       @trips = Trip.where(user: current_user)
     end
+
+    @upcoming = @trips.select { |trip| trip.departure >= Date.today }
+    @previous = @trips.select { |trip| trip.departure <= Date.today }
   end
 
   def new
