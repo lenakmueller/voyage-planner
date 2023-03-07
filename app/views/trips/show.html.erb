@@ -1,0 +1,17 @@
+<h1><%= @trip.title %></h1>
+<p><span> <%= @trip.departure %> </span> - <span><%= @trip.return_day %> </span></p>
+<p>Notes: <%= @trip.notes %></p>
+<p><%= @trip.location %></p>
+
+<div>
+  <%= link_to "Delete trip",
+    trips_path(@trip),
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+  <%#= link_to "Update trip", edit_trip_path(@trip) %>
+</div>
+
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>

@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_trip, only: %i[edit update destroy]
+  before_action :set_trip, only: %i[edit update destroy show]
 
   def index
     @user = current_user
@@ -9,6 +9,14 @@ class TripsController < ApplicationController
     else
       @trips = Trip.where(user: current_user)
     end
+  end
+
+  def show
+    # @trip = Trip.new
+    @markers = [{
+      lat: @trip.latitude,
+      lng: @trip.longitude
+    }]
   end
 
   def new
