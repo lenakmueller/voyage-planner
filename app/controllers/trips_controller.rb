@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[edit update destroy]
+  before_action :set_trip, only: %i[edit update destroy show]
 
   def index
     @user = current_user
@@ -11,6 +11,14 @@ class TripsController < ApplicationController
 
     @upcoming = @trips.select { |trip| trip.departure >= Date.today }
     @previous = @trips.select { |trip| trip.departure <= Date.today }
+  end
+
+  def show
+    # @trip = Trip.new
+    @markers = [{
+      lat: @trip.latitude,
+      lng: @trip.longitude
+    }]
   end
 
   def new

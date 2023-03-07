@@ -80,3 +80,5 @@ end
 gem "devise"
 
 gem "pg_search"
+
+gem "geocoder"
