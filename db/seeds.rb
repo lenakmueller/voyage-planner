@@ -1,18 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
 require "open-uri"
 Transportation.destroy_all
 Accommodation.destroy_all
 Activity.destroy_all
 Trip.destroy_all
 User.destroy_all
-# Booking.destroy_all
 
 fran = User.create(first_name: "Fran", last_name: "Rodrigo", nickname: "Muscles", email: "fran@gmail.com", password: "password", mobile_number: "00491786655349")
 james = User.create(first_name: "James", last_name: "Bunyon", nickname: "Jim", email: "james@gmail.com", password: "password", mobile_number: "00491786655348")
@@ -35,10 +26,34 @@ london = { title: "London calling", location: "London", departure: "13.03.2023",
   puts "Created #{trip.title}"
 end
 
+greece = Trip.first
+
 [london].each do |attributes|
   # file = URI.open(images[index])
   trip = Trip.new(attributes)
   # trip.photos.attach(io: file, filename: "trip.png", content_type: "image/png")
   trip.save!
   puts "Created #{trip.title}"
+end
+
+acc_greece = { departure: "24.04.23", booking_ref: "AA123", location: "Psaron 31, Athina 104 38, Greece", return_day: "01.06.2023", notes: "notes", trip: greece }
+act_greece = { name: "Tavern Klimataria", booking_ref: "Dinner", date: "27.05.2023", start_time: "18:00", end_time: "20:30", notes: "notes", trip: greece }
+trans_greece = { departure: "28.04.23", transport_mode: 3, booking_ref: "qwe123", location: "Gianni, Statha 12Α, Athina 106 72, Greece", notes: "notes", return_day: "01.06.2023", trip: greece }
+
+[acc_greece].each do |attributes|
+  acc = Accommodation.new(attributes)
+  acc.save!
+  puts "Created #{acc.booking_ref}"
+end
+
+[act_greece].each do |attributes|
+  act = Activity.new(attributes)
+  act.save!
+  puts "Created #{act.booking_ref}"
+end
+
+[trans_greece].each do |attributes|
+  trans = Transportation.new(attributes)
+  trans.save!
+  puts "Created #{trans.booking_ref}"
 end
