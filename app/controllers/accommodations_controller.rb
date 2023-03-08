@@ -25,6 +25,6 @@ class AccommodationsController < ApplicationController
   end
 
   def accommodation_params
-    params.require(:accommodation).permit(:departure, :booking_ref, :location, :notes, :return_day)
+    params.require(:accommodation).permit(:departure, :booking_ref, :location, :notes, :return_day, :photo)
   end
 end
