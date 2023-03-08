@@ -5,6 +5,9 @@ class Accommodation < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
+  validates :departure, presence: true
+  validates :return_day, presence: true
+
   validate :at_least_one_field_present
 
   private
