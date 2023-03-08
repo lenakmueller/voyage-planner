@@ -14,11 +14,14 @@ class TripsController < ApplicationController
   end
 
   def show
-    # @trip = Trip.new
     @markers = [{
       lat: @trip.latitude,
       lng: @trip.longitude
     }]
+
+    @accommodations = @trip.accommodations
+    @activities = @trip.activities
+    @transportations = @trip.transportations
   end
 
   def new
@@ -27,7 +30,6 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-    # @trip.user = current_user
 
     if @trip.save
       redirect_to trip_path(@trip), notice: 'Trip was successfully added.'
