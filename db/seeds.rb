@@ -36,9 +36,9 @@ greece = Trip.first
   puts "Created #{trip.title}"
 end
 
-acc_greece = { departure: "24.04.23", booking_ref: "AA123", location: "Psaron 31, Athina 104 38, Greece", return_day: "01.06.2023", notes: "notes", trip: greece }
-act_greece = { name: "Tavern Klimataria", booking_ref: "Dinner", date: "27.05.2023", start_time: "18:00", end_time: "20:30", notes: "notes", trip: greece }
-trans_greece = { departure: "28.04.23", transport_mode: 3, booking_ref: "qwe123", location: "Gianni, Statha 12Α, Athina 106 72, Greece", notes: "notes", return_day: "01.06.2023", trip: greece }
+acc_greece = { departure: "24.04.23", booking_ref: "AA123", location: "Psaron 31, Athina, Greece", return_day: "01.06.2023", notes: "notes", trip: greece }
+act_greece = { name: "Tavern Klimataria", booking_ref: "Dinner", date: "27.05.2023", location: "Pl. Theatrou 2, Athina, Greece", start_time: "18:00", end_time: "20:30", notes: "notes", trip: greece }
+trans_greece = { departure: "28.04.23", transport_mode: 3, booking_ref: "qwe123", location: "Pireos 254, Tavros, Greece", notes: "notes", return_day: "01.06.2023", trip: greece }
 
 [acc_greece].each do |attributes|
   acc = Accommodation.new(attributes)

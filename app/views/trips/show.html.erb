@@ -40,6 +40,7 @@
         <p> <%= item.name  %> </p>
         <p> <%= item.booking_ref  %> </p>
         <p> <%= item.date  %> </p>
+        <p> <%= item.location  %> </p>
         <p><span> <%= item.start_time.strftime("%H:%M")  %> </span> - <span> <%= item.end_time.strftime("%H:%M")  %> </span></p>
         <p> <%= item.notes %> </p>
       </div>
@@ -61,7 +62,7 @@
   </div>
 </div>
 
-<div style="width: 60%; height: 100px;"
+<div style="width: 60%; height: 300px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
