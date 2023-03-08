@@ -1,0 +1,20 @@
+<%= link_to trip_path(trip), class: "text-deco-none" do  %>
+  <div class="card-trip">
+      <% if trip.photos.any? %>
+        <%= cl_image_tag trip.photos.first.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
+        <img url="https://unsplash.com/de/fotos/qyAka7W5uMY" />
+      <% end %>
+      <div class="card-trip-infos">
+        <div>
+          <h3><%= trip.title.upcase %></h3>
+          <p><%= trip.departure.strftime("%b %d") %> to <%= trip.return_day.strftime("%b %d, %Y") %></p>
+        </div>
+        <%# <% if trip.user.avatar.attached? %>
+          <%# <%= cl_image_tag trip.user.avatar.key, class: "card-trip-user avatar-bordered" %>
+        <%# <% else %>
+          <img src="https://www.shutterstock.com/image-vector/man-icon-vector-260nw-1040084344.jpg" class="card-trip-user avatar-bordered" />
+        <%# <% end %>
+      </div>
+  </div>
+<% end %>

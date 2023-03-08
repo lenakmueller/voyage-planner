@@ -1,0 +1,48 @@
+.btn-search {
+  color: #3A506B;
+  background-color: #3A506B;
+  padding: 10px 35px 11px 10px;
+  margin: 12px 12px 14px -8px;
+  border-radius: 50%;
+  opacity: .8;
+  font-size: 15px;
+}
+
+.form-search {
+  .btn-search {
+    border: none;
+  }
+}
+
+#query {
+  margin: 14px;
+  padding: 0;
+  border: 1.5px solid #5A7684;
+  border-radius: 2.25rem;
+  text-align: center;
+}
+
+.btn-search:hover {
+  background-color: #CED0CE;
+  opacity: .7;
+  color: #CED0CE;
+  font-weight: 400;
+}
+
+.form-control-search {
+  border-radius: 1.25rem 0 0 1.25rem;
+  padding: 0.5rem 8rem;
+  border: 1px solid grey;
+}
+
+.form-search {
+  position: relative;
+}
+
+.fa-magnifying-glass {
+  position: absolute;
+  bottom: 25px;
+  right: 24px;
+  color: white;
+  font-size: 20px;
+}

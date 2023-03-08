@@ -1,2 +1,13 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "trips_index";
+
+h1 {
+  margin: 20px 30px 24px;
+}
+
+h2 {
+  margin: 25px 0px 0px 0px;
+  padding: 20px;
+  text-align: center;
+}

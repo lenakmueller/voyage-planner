@@ -8,27 +8,25 @@
         class: "form-control-search",
         placeholder: "Search trips"
       %>
+      <%# <div class= "d-flex justify-content-center align-items-center bg-light" height= "30px" width= "30px"> %>
       <%= submit_tag "", class: "btn-search" %>
-      <%# <i class="fa-solid fa-magnifying-glass"></i> %>
+      <i class="fa-solid fa-magnifying-glass"></i>
     <% end %>
+      <%# </div> %>
   </div>
 
-    <h2>Your upcoming trips</h2>
-    <ul>
+  <h2 class="index header">Your upcoming trips</h2>
+    <div class="cards">
       <% @upcoming.each do |trip| %>
-        <li><%= link_to trip_path(trip) do  %>
-          <%= trip.title %></li>
-        <% end %>
+        <%= render "shared/card_trip", trip:trip %>
       <% end %>
-    </ul>
+    </div>
 
-    <h2> Your previous trips </h2>
-    <ul>
+  <h2 class="index header"> Your previous trips </h2>
+      <div class="cards">
       <% @previous.each do |trip| %>
-        <li><%= link_to trip_path(trip) do  %>
-          <%= trip.title %></li>
-        <% end %>
+        <%= render "shared/card_trip", trip:trip %>
       <% end %>
-    </ul>
+      </div>
 
 </div>
