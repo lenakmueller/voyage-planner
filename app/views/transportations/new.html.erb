@@ -6,7 +6,12 @@
   <%= f.input :return_day, as: :date, html5: true %>
   <%= f.input :transport_mode, collection: ["flight", "train", "boat", "bike", "car"], as: :radio_buttons %>
   <%= f.input :photo, as: :file %>
-  <%= f.input :location %>
+
+  <%= f.input :location,
+    input_html: {data: {location_autocomplete_target: "location"}, class: 'd-none'},
+    wrapper_html: {data: {controller: "location-autocomplete", location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+  %>
+
   <%= f.input :notes %>
 
   <%= f.submit "Save" %>
