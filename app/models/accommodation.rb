@@ -1,5 +1,6 @@
 class Accommodation < ApplicationRecord
   belongs_to :trip
+  has_one_attached :photo
 
   validate :at_least_one_field_present
 
