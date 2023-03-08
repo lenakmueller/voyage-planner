@@ -12,7 +12,60 @@
   <%= link_to "Update trip", edit_trip_path(@trip) %>
 </div>
 
-<div style="width: 100%; height: 600px;"
+<ul>
+  <li><%= link_to "Activities",  new_trip_activity_path(@trip) %></li>
+  <li><%= link_to "Transportation",  new_trip_transportation_path(@trip) %></li>
+  <li><%= link_to "Accommodation",  new_trip_accommodation_path(@trip) %></li>
+</ul>
+
+<div>
+  <h3>Accommodations</h3>
+  <div>
+    <% @accommodations.each do |item| %>
+      <div>
+        <p><span> <%= item.departure  %> </span> - <span> <%= item.return_day  %> </span></p>
+        <p> <%= item.booking_ref  %> </p>
+        <p> <%= item.location  %> </p>
+        <p> <%= item.notes %> </p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <h3>Activities</h3>
+  <div>
+    <% @activities.each do |item| %>
+      <div>
+        <p> <%= item.name  %> </p>
+        <p> <%= item.booking_ref  %> </p>
+        <p> <%= item.date  %> </p>
+
+        <p> <%= item.location  %> </p>
+        <p><span> <%= item.start_time  %> </span> - <span> <%= item.end_time  %> </span></p>
+        <p> <%= item.notes %> </p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <h3>Transportations</h3>
+  <div>
+    <% @transportations.each do |item| %>
+      <div>
+        <p><span> <%= item.departure  %> </span> - <span> <%= item.return_day  %> </span></p>
+        <p> <%= item.booking_ref  %> </p>
+        <p> <%= item.location  %> </p>
+        <p> <%= item.notes %> </p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div style="width: 60%; height: 300px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+  <%# <%= cl_image_tag @trip.transportations.last.photo.key, format: :jpeg, height:150, crop: :fill %>

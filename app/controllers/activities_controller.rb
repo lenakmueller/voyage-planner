@@ -8,10 +8,13 @@ class ActivitiesController < ApplicationController
   def create
     @activity = @trip.activities.build(activity_params)
 
-    if @activity.save
-      redirect_to trip_path(@trip), notice: 'Activity was successfully added.'
+    if @activity.valid?
+      @activity.save
+      redirect_to trip_path(@trip), notice: 'Success!'
+    elsif @activity.errors[:base].include?("Please fill out at least one field")
+      redirect_to new_trip_activity_path(@trip), alert: 'Please fill out at least one field'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -22,6 +25,6 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:name, :booking_ref, :date, :start_time, :end_time, :notes)
+    params.require(:activity).permit(:name, :booking_ref, :date, :start_time, :end_time, :photo, :notes)
   end
 end

@@ -14,11 +14,41 @@ class TripsController < ApplicationController
   end
 
   def show
-    # @trip = Trip.new
     @markers = [{
       lat: @trip.latitude,
-      lng: @trip.longitude
+      lng: @trip.longitude,
+      marker_html: render_to_string(partial: "marker")
     }]
+
+    @accommodations = @trip.accommodations
+    @accommodations.geocoded.map do |acc|
+      el = {
+        lat: acc.latitude,
+        lng: acc.longitude,
+        marker_html: render_to_string(partial: "acc_marker")
+      }
+      @markers.push(el)
+    end
+
+    @activities = @trip.activities
+    @activities.geocoded.map do |act|
+      el = {
+        lat: act.latitude,
+        lng: act.longitude,
+        marker_html: render_to_string(partial: "act_marker")
+      }
+      @markers.push(el)
+    end
+
+    @transportations = @trip.transportations
+    @transportations.geocoded.map do |trans|
+      el = {
+        lat: trans.latitude,
+        lng: trans.longitude,
+        marker_html: render_to_string(partial: "trans_marker")
+      }
+      @markers.push(el)
+    end
   end
 
   def new
@@ -27,7 +57,6 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-    # @trip.user = current_user
 
     if @trip.save
       redirect_to trip_path(@trip), notice: 'Trip was successfully added.'
