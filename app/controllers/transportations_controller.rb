@@ -22,6 +22,6 @@ class TransportationsController < ApplicationController
   end
 
   def transportation_params
-    params.require(:transportation).permit(:departure, :return_day, :transport_mode, :location, :booking_ref, :notes)
+    params.require(:transportation).permit(:departure, :return_day, :transport_mode, :location, :booking_ref, :photo, :notes)
   end
 end

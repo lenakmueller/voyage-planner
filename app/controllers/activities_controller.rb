@@ -22,6 +22,6 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:name, :booking_ref, :date, :start_time, :end_time, :notes)
+    params.require(:activity).permit(:name, :booking_ref, :date, :start_time, :end_time, :photo, :notes)
   end
 end
