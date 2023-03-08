@@ -16,12 +16,44 @@ class TripsController < ApplicationController
   def show
     @markers = [{
       lat: @trip.latitude,
-      lng: @trip.longitude
+      lng: @trip.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: { trip: @trip }),
+      marker_html: render_to_string(partial: "marker")
     }]
 
+
     @accommodations = @trip.accommodations
+    @accommodations.geocoded.map do |acc|
+      el = {
+        lat: acc.latitude,
+        lng: acc.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { acc: acc }),
+        marker_html: render_to_string(partial: "acc_marker")
+      }
+      @markers.push(el)
+    end
+
     @activities = @trip.activities
+    @activities.geocoded.map do |act|
+      el = {
+        lat: act.latitude,
+        lng: act.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { act: act }),
+        marker_html: render_to_string(partial: "act_marker")
+      }
+      @markers.push(el)
+    end
+
     @transportations = @trip.transportations
+    @transportations.geocoded.map do |trans|
+      el = {
+        lat: trans.latitude,
+        lng: trans.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { trans: trans }),
+        marker_html: render_to_string(partial: "trans_marker")
+      }
+      @markers.push(el)
+    end
   end
 
   def new
