@@ -10,6 +10,10 @@ class Accommodation < ApplicationRecord
 
   validate :at_least_one_field_present
 
+  enum accommodation_mode: { hotel: 0, hostel: 1, appartment: 2, airbnb: 3, camping: 4 }
+
+  CATEGORIES = ["hotel", "hostel", "appartment", "airbnb", "camping"]
+
   private
 
   def at_least_one_field_present

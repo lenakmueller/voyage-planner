@@ -4,9 +4,9 @@ class TripsController < ApplicationController
   def index
     @user = current_user
     if params[:query].present?
-      @trips = Trip.where(user: current_user).search_by_title_and_location(params[:query])
+      @trips = Trip.where(user: current_user).search_by_title_and_location(params[:query]).order('departure ASC')
     else
-      @trips = Trip.where(user: current_user)
+      @trips = Trip.where(user: current_user).order('departure ASC')
     end
 
     @upcoming = @trips.select { |trip| trip.departure >= Date.today }
