@@ -12,7 +12,13 @@ class Accommodation < ApplicationRecord
 
   enum accommodation_mode: { hotel: 0, hostel: 1, appartment: 2, airbnb: 3, camping: 4 }
 
-  CATEGORIES = ["hotel", "hostel", "appartment", "airbnb", "camping"]
+  #CATEGORIES = ["hotel", "hostel", "appartment", "airbnb", "camping"]
+
+  CATEGORIES = [["hotel", "<i class='fa-solid fa-hotel'></i>"],
+                ["hostel", "<i class='fa-solid fa-bed'></i>"],
+                ["appartment", "<i class='fa-solid fa-building'></i>"],
+                ["airbnb", "<i class='fa-brands fa-airbnb'></i>"],
+                ["camping", "<i class='fa-solid fa-campground'></i>"]]
 
   private
 

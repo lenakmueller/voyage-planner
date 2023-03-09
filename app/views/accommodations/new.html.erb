@@ -1,7 +1,17 @@
 <h1>New accomodation</h1>
 
 <%= simple_form_for [@trip, @accommodation], input_html: { multiple: true } do |f| %>
-  <%= f.input :accommodation_mode,
+  <div class="accommodation_mode-wrapper">
+      <input type="hidden" name="accommodation[accommodation_mode]" value="" autocomplete="off">
+      <% Accommodation::CATEGORIES.each do |t_pair| %>
+        <div class="accommodation_mode-item">
+          <input class="form-check-input radio_buttons required accommodation_mode-selector" type="radio" value="<%= t_pair[0] %>" name="accommodation[accommodation_mode]" id="accommodation_accommodation_mode_<%= t_pair[0] %>">
+          <label class="form-check-label collection_radio_buttons" for="accommodation_accommodation_mode_<%= t_pair[0] %>"><%= sanitize t_pair[1] %></label>
+        </div>
+      <% end %>
+    </div>
+
+  <%#= f.input :accommodation_mode,
     as: :radio_buttons,
     collection_wrapper_tag: 'div',
     collection_wrapper_class: 'accommodation_mode-wrapper',
