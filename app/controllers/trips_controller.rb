@@ -1,6 +1,8 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[edit update destroy show]
 
+  Friends = []
+
   def index
     @user = current_user
     if params[:query].present?
@@ -14,18 +16,10 @@ class TripsController < ApplicationController
   end
 
   def show
-    # @friends = []
-    # if params[:query].present?
-    #   @friends.push(User.where(email: params[:query]).as_json)
-    # end
-
-
-    # if params[:query].present?
-    #   @friends = User.where(email: params[:query]).as_json
-
-      # @user = current_user
-      # @user.friends = @friend.id
-    # end
+    @friends = Friends
+    if params[:query].present?
+      Friends.push(User.where(email: params[:query]).as_json)
+    end
 
     @markers = [{
       lat: @trip.latitude,
