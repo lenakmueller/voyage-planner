@@ -3,6 +3,7 @@ class Trip < ApplicationRecord
   has_many :transportations
   has_many :accommodations
   has_many :activities
+  has_many :friends
   has_many_attached :photos
 
   geocoded_by :location
