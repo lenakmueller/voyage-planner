@@ -18,9 +18,8 @@
   <%= f.input :departure, as: :date, html5: true %>
   <%= f.input :return_day, as: :date, html5: true %>
   <%= f.input :notes %>
-  <%= f.submit "Add accommodation" %>
-
   <%= f.input :photo, as: :file %>
+  <%= f.submit "Add accommodation" %>
 <% end %>
 
 <%= link_to "Back", trip_path(@trip) %>
