@@ -19,7 +19,7 @@
   box-sizing: border-box;
   width: 100%;
   font-size: 12px;
-  text-align: left;
+  text-align: center;
   padding: 10px 10px 30px 10px;
   border: 1px solid #EAEAEA;
   border-radius: 4px;
@@ -31,31 +31,49 @@
 }
 
 
-#accommodation_accommodation_mode_ruby + label {
+#accommodation_accommodation_mode_hotel + label {
   color: #FD1015;
 }
 
-#accommodation_accommodation_mode_ruby:checked + label {
+#accommodation_accommodation_mode_hotel:checked + label {
   background-color: #FD1015;
   border-color: #FD1015;
 }
 
 
-#accommodation_accommodation_mode_javascript + label {
+#accommodation_accommodation_mode_hostel + label {
   color: #FFC65A;
 }
 
-#accommodation_accommodation_mode_javascript:checked + label {
+#accommodation_accommodation_mode_hostel:checked + label {
   background-color: #FFC65A;
   border-color: #FFC65A;
 }
 
 
-#accommodation_accommodation_mode_css + label {
+#accommodation_accommodation_mode_appartment + label {
   color: #62DDF5;
 }
 
-#accommodation_accommodation_mode_css:checked + label {
+#accommodation_accommodation_mode_appartment:checked + label {
   background-color: #62DDF5;
   border-color: #62DDF5;
+}
+
+#accommodation_accommodation_mode_airbnb + label {
+  color: #03b606;
+}
+
+#accommodation_accommodation_mode_airbnb:checked + label {
+  background-color: #03b606;
+  border-color: #03b606;
+}
+
+#accommodation_accommodation_mode_camping + label {
+  color: #e69900;
+}
+
+#accommodation_accommodation_mode_camping:checked + label {
+  background-color: #e69900;
+  border-color: #e69900;
 }
