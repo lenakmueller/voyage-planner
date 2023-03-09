@@ -14,7 +14,13 @@
     <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>
 
-  <div><%= @friend.first["email"] %> </div>
+  <div>
+    <% if @friends.present? %>
+      <% @friends.flatten.each do |friend| %>
+        <li> <%= friend["email"] %> </li>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 <div>
