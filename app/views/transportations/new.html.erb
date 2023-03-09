@@ -1,12 +1,6 @@
 <h1>Add your ride</h1>
 
 <%= simple_form_for [@trip, @transportation] do |f| %>
-  <%= f.input :booking_ref %>
-  <%= f.input :departure, html5: true %>
-  <%= f.input :return_day, as: :date, html5: true %>
-
-  <%#= f.input :transport_mode, collection: ["flight", "train", "boat", "bike", "car"], as: :radio_buttons %>
-
 
   <%= f.input :transport_mode,
             as: :radio_buttons,
@@ -14,7 +8,12 @@
             collection_wrapper_class: 'transport_mode-wrapper',
             item_wrapper_class: 'transport_mode-item',
             input_html: {class: 'transport_mode-selector'},
+            legend_tag: false,
             collection: Transportation::CATEGORIES %>
+
+  <%= f.input :booking_ref %>
+  <%= f.input :departure, html5: true %>
+  <%= f.input :return_day, as: :date, html5: true %>
 
   <%= f.input :photo, as: :file %>
 
