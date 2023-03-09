@@ -1,10 +1,11 @@
 .mapboxgl-popup {
   max-width: 200px;
+  min-width: 150px;
 }
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: "Open Sans", sans-serif;
+  font-family: Raleway, sans-serif;
 }
 
 .marker-background {
@@ -15,4 +16,13 @@
   width: 45px;
   height: 45px;
   border-radius: 50%;
+}
+
+.mapboxgl-popup-anchor-top-right .mapboxgl-popup-content {
+  border-radius: 10px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }

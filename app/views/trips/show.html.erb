@@ -44,7 +44,7 @@
     <div>
       <% @accommodations.each do |item| %>
         <div>
-          <p><span> <%= item.departure  %> </span> - <span> <%= item.return_day  %> </span></p>
+          <p><span> <%= item.departure.strftime("%B %e %Y")  %> </span> - <span> <%= item.return_day.strftime("%B %e %Y")  %> </span></p>
           <p> <%= item.booking_ref  %> </p>
           <p> <%= item.location  %> </p>
           <p> <%= item.notes %> </p>
@@ -60,10 +60,10 @@
         <div>
           <p> <%= item.name  %> </p>
           <p> <%= item.booking_ref  %> </p>
-          <p> <%= item.date  %> </p>
+          <p> <%= item.date.strftime("%B %e %Y")  %> </p>
 
           <p> <%= item.location  %> </p>
-          <p><span> <%= item.start_time  %> </span> - <span> <%= item.end_time  %> </span></p>
+          <p><span> <%= item.start_time.strftime("%l:%M %p")  %> </span> - <span> <%= item.end_time.strftime("%l:%M %p")  %> </span></p>
           <p> <%= item.notes %> </p>
         </div>
       <% end %>
@@ -75,7 +75,7 @@
     <div>
       <% @transportations.each do |item| %>
         <div>
-          <p><span> <%= item.departure  %> </span> - <span> <%= item.return_day  %> </span></p>
+          <p><span> <%= item.departure.strftime("%B %e %Y")  %> </span> - <span> <%= item.return_day.strftime("%B %e %Y")  %> </span></p>
           <p> <%= item.transport_mode  %> </p>
           <p> <%= item.booking_ref  %> </p>
           <p> <%= item.location  %> </p>
