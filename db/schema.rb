@@ -73,6 +73,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_112704) do
     t.index ["trip_id"], name: "index_activities_on_trip_id"
   end
 
+  create_table "friends", force: :cascade do |t|
+    t.string "nickname"
+    t.string "email"
+    t.bigint "user_id", null: false
+    t.bigint "trip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_friends_on_trip_id"
+    t.index ["user_id"], name: "index_friends_on_user_id"
+  end
+
   create_table "transportations", force: :cascade do |t|
     t.date "departure"
     t.integer "transport_mode"
@@ -122,6 +133,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_112704) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "trips"
+  add_foreign_key "friends", "trips"
+  add_foreign_key "friends", "users"
   add_foreign_key "transportations", "trips"
   add_foreign_key "trips", "users"
 end
