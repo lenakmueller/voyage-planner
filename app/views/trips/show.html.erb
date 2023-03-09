@@ -1,72 +1,94 @@
-<%= link_to "Back to trips", trips_path %>
-<h1><%= @trip.title %></h1>
-<p><span> <%= @trip.departure %> </span> - <span><%= @trip.return_day %> </span></p>
-<p>Notes: <%= @trip.notes %></p>
-<p><%= @trip.location %></p>
+<div class="container">
+  <%= link_to "Back to trips", trips_path %>
+  <h1><%= @trip.title %></h1>
+  <p><span> <%= @trip.departure.strftime("%b %d") %> </span> to <span><%= @trip.return_day.strftime("%b %d, %Y") %> </span></p>
+  <p>Notes: <%= @trip.notes %></p>
+  <p><%= @trip.location %></p>
 
-<div>
-  <%= link_to "Delete trip",
-    trips_path(@trip),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
-  <%= link_to "Update trip", edit_trip_path(@trip) %>
-</div>
-
-<ul>
-  <li><%= link_to "Activities",  new_trip_activity_path(@trip) %></li>
-  <li><%= link_to "Transportation",  new_trip_transportation_path(@trip) %></li>
-  <li><%= link_to "Accommodation",  new_trip_accommodation_path(@trip) %></li>
-</ul>
-
-<div>
-  <h3>Accommodations</h3>
-  <div>
-    <% @accommodations.each do |item| %>
-      <div>
-        <p><span> <%= item.departure  %> </span> - <span> <%= item.return_day  %> </span></p>
-        <p> <%= item.booking_ref  %> </p>
-        <p> <%= item.location  %> </p>
-        <p> <%= item.notes %> </p>
-      </div>
+  <div class="container">
+    <%= form_with url: trip_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Add a friend to your trip"
+      %>
+      <%= submit_tag "", class: "btn-search" %>
+      <i class="fa-solid fa-magnifying-glass"></i>
     <% end %>
-  </div>
-</div>
 
-<div>
-  <h3>Activities</h3>
+    <div>
+      <% if @friends.present? %>
+        <% @friends.flatten.each do |friend| %>
+          <li> <%= friend["email"] %> </li>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
   <div>
-    <% @activities.each do |item| %>
-      <div>
-        <p> <%= item.name  %> </p>
-        <p> <%= item.booking_ref  %> </p>
-        <p> <%= item.date  %> </p>
-
-        <p> <%= item.location  %> </p>
-        <p><span> <%= item.start_time  %> </span> - <span> <%= item.end_time  %> </span></p>
-        <p> <%= item.notes %> </p>
-      </div>
-    <% end %>
+    <%= link_to "Delete trip",
+      trips_path(@trip),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %>
+    <%= link_to "Update trip", edit_trip_path(@trip) %>
   </div>
-</div>
 
-<div>
-  <h3>Transportations</h3>
+  <ul>
+    <li><%= link_to "Activities",  new_trip_activity_path(@trip) %></li>
+    <li><%= link_to "Transportation",  new_trip_transportation_path(@trip) %></li>
+    <li><%= link_to "Accommodation",  new_trip_accommodation_path(@trip) %></li>
+  </ul>
+
   <div>
-    <% @transportations.each do |item| %>
-      <div>
-        <p><span> <%= item.departure  %> </span> - <span> <%= item.return_day  %> </span></p>
-        <p> <%= item.transport_mode  %> </p>
-        <p> <%= item.booking_ref  %> </p>
-        <p> <%= item.location  %> </p>
-        <p> <%= item.notes %> </p>
-      </div>
-    <% end %>
+    <h3>Accommodations</h3>
+    <div>
+      <% @accommodations.each do |item| %>
+        <div>
+          <p><span> <%= item.departure  %> </span> - <span> <%= item.return_day  %> </span></p>
+          <p> <%= item.booking_ref  %> </p>
+          <p> <%= item.location  %> </p>
+          <p> <%= item.notes %> </p>
+        </div>
+      <% end %>
+    </div>
   </div>
+
+  <div>
+    <h3>Activities</h3>
+    <div>
+      <% @activities.each do |item| %>
+        <div>
+          <p> <%= item.name  %> </p>
+          <p> <%= item.booking_ref  %> </p>
+          <p> <%= item.date  %> </p>
+
+          <p> <%= item.location  %> </p>
+          <p><span> <%= item.start_time  %> </span> - <span> <%= item.end_time  %> </span></p>
+          <p> <%= item.notes %> </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div>
+    <h3>Transportations</h3>
+    <div>
+      <% @transportations.each do |item| %>
+        <div>
+          <p><span> <%= item.departure  %> </span> - <span> <%= item.return_day  %> </span></p>
+          <p> <%= item.transport_mode  %> </p>
+          <p> <%= item.booking_ref  %> </p>
+          <p> <%= item.location  %> </p>
+          <p> <%= item.notes %> </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div style="width: 60%; height: 300px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+    <%# <%= cl_image_tag @trip.transportations.last.photo.key, format: :jpeg, height:150, crop: :fill %>
 </div>
-
-<div style="width: 60%; height: 300px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
-  <%# <%= cl_image_tag @trip.transportations.last.photo.key, format: :jpeg, height:150, crop: :fill %>
