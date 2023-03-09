@@ -14,6 +14,11 @@ class TripsController < ApplicationController
   end
 
   def show
+    # @users = User.all
+    if params[:query].present?
+      @friend = User.where(email: params[:query]).as_json()
+    end
+
     @markers = [{
       lat: @trip.latitude,
       lng: @trip.longitude,
