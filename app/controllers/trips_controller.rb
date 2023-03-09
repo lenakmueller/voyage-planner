@@ -17,6 +17,7 @@ class TripsController < ApplicationController
     @markers = [{
       lat: @trip.latitude,
       lng: @trip.longitude,
+      info_window_html: render_to_string(partial: "info_marker", locals: { trip: @trip }),
       marker_html: render_to_string(partial: "marker")
     }]
 
@@ -25,6 +26,7 @@ class TripsController < ApplicationController
       el = {
         lat: acc.latitude,
         lng: acc.longitude,
+        info_window_html: render_to_string(partial: "info_acc", locals: { acc: acc }),
         marker_html: render_to_string(partial: "acc_marker")
       }
       @markers.push(el)
@@ -35,6 +37,7 @@ class TripsController < ApplicationController
       el = {
         lat: act.latitude,
         lng: act.longitude,
+        info_window_html: render_to_string(partial: "info_act", locals: { act: act }),
         marker_html: render_to_string(partial: "act_marker")
       }
       @markers.push(el)
@@ -45,6 +48,7 @@ class TripsController < ApplicationController
       el = {
         lat: trans.latitude,
         lng: trans.longitude,
+        info_window_html: render_to_string(partial: "info_trans", locals: { trans: trans }),
         marker_html: render_to_string(partial: "trans_marker")
       }
       @markers.push(el)
