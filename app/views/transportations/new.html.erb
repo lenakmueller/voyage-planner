@@ -4,7 +4,18 @@
   <%= f.input :booking_ref %>
   <%= f.input :departure, html5: true %>
   <%= f.input :return_day, as: :date, html5: true %>
-  <%= f.input :transport_mode, collection: ["flight", "train", "boat", "bike", "car"], as: :radio_buttons %>
+
+  <%#= f.input :transport_mode, collection: ["flight", "train", "boat", "bike", "car"], as: :radio_buttons %>
+
+
+  <%= f.input :transport_mode,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'transport_mode-wrapper',
+            item_wrapper_class: 'transport_mode-item',
+            input_html: {class: 'transport_mode-selector'},
+            collection: Transportation::CATEGORIES %>
+
   <%= f.input :photo, as: :file %>
 
   <%= f.input :location,

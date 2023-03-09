@@ -55,6 +55,7 @@
     <% @transportations.each do |item| %>
       <div>
         <p><span> <%= item.departure  %> </span> - <span> <%= item.return_day  %> </span></p>
+        <p> <%= item.transport_mode  %> </p>
         <p> <%= item.booking_ref  %> </p>
         <p> <%= item.location  %> </p>
         <p> <%= item.notes %> </p>

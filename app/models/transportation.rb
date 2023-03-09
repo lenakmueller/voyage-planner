@@ -9,6 +9,9 @@ class Transportation < ApplicationRecord
   validates :return_day, presence: true
   validates :transport_mode, presence: true
   validates :location, presence: true
-  
-  enum transport_mode: { flight: 0, train: 1, boat: 2, bike: 3, car: 4 }
+
+  CATEGORIES = enum transport_mode: { flight: 0, train: 1, boat: 2, bike: 3, car: 4 }
+
+  CATEGORIES = ["flight", "train", "boat", "bike", "car"]
+
 end
