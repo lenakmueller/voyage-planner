@@ -12,6 +12,9 @@ class Transportation < ApplicationRecord
 
   enum transport_mode: { flight: 0, train: 1, boat: 2, bike: 3, car: 4 }
 
-  CATEGORIES = ["flight", "train", "boat", "bike", "car"]
-
+  CATEGORIES = [["flight", "<i class='fa-solid fa-plane'></i>"],
+                ["train", "<i class='fa-solid fa-train'></i>"],
+                ["boat", "<i class='fa-solid fa-ship'></i>"],
+                ["bike", "<i class='fa-solid fa-bicycle'></i>"],
+                ["car", "<i class='fa-solid fa-car'></i>"]]
 end
