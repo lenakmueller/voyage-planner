@@ -1,4 +1,9 @@
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))"> <%= cl_image_tag @trip.photo.key, format: :jpeg, height:150, width:500, crop: :fill %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))">
+    <% if @trip.photo.attached? %>
+      <%= cl_image_tag trip.photo.key, height: 150, width: 500, crop: :fill %>
+    <% else %>
+        <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" height="300" width="500" crop= "fill" >
+    <% end %>
   <div class="container">
   <h1><%= @trip.title.upcase %></h1>
   </div>
@@ -23,8 +28,7 @@
     <h2><%= @trip.location %></h2>
   </div>
 
-  <div class="container">
-    <%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
+<%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
@@ -33,6 +37,9 @@
       <%= submit_tag "", class: "btn-search" %>
 <i class="fa-solid fa-user-group"></i>
     <% end %>
+
+  <div class="container">
+
 
     <div class="friend-list">
       <% if @friends.present? %>
@@ -59,13 +66,13 @@
 
   <div>
     <h3>Accommodations</h3>
-    <div>
+    <div class="component">
       <% @accommodations.each do |item| %>
         <div>
           <p><span> <%= item.departure.strftime("%B %e %Y")  %> </span> - <span> <%= item.return_day.strftime("%B %e %Y")  %> </span></p>
           <p> <%= item.booking_ref  %> </p>
           <p> <%= item.location  %> </p>
-          <p> <%= item.notes %> </p>
+
         </div>
       <% end %>
     </div>
@@ -73,7 +80,7 @@
 
   <div>
     <h3>Activities</h3>
-    <div>
+    <div class="component">
       <% @activities.each do |item| %>
         <div>
           <p> <%= item.name  %> </p>
@@ -82,7 +89,7 @@
 
           <p> <%= item.location  %> </p>
           <p><span> <%= item.start_time.strftime("%l:%M %p")  %> </span> - <span> <%= item.end_time.strftime("%l:%M %p")  %> </span></p>
-          <p> <%= item.notes %> </p>
+
         </div>
       <% end %>
     </div>
@@ -90,20 +97,20 @@
 
   <div>
     <h3>Transportations</h3>
-    <div>
+    <div class="component">
       <% @transportations.each do |item| %>
         <div>
           <p><span> <%= item.departure.strftime("%B %e %Y")  %> </span> - <span> <%= item.return_day.strftime("%B %e %Y")  %> </span></p>
           <p> <%= item.transport_mode  %> </p>
           <p> <%= item.booking_ref  %> </p>
           <p> <%= item.location  %> </p>
-          <p> <%= item.notes %> </p>
+
         </div>
       <% end %>
     </div>
   </div>
 
-  <div style="width: 60%; height: 300px;"
+  <div style="width: 100%; height: 300px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
