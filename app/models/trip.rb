@@ -4,7 +4,7 @@ class Trip < ApplicationRecord
   has_many :accommodations
   has_many :activities
   has_many :friends
-  has_many_attached :photos
+  has_one_attached :photo
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?

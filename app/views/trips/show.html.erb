@@ -1,5 +1,6 @@
 <div class="container">
   <%= link_to "Back to trips", trips_path %>
+  <%= cl_image_tag @trip.photo.key, format: :jpeg, height:150, crop: :fill %>
   <h1><%= @trip.title %></h1>
   <p><span> <%= @trip.departure.strftime("%b %d") %> </span> to <span><%= @trip.return_day.strftime("%b %d, %Y") %> </span></p>
   <p>Notes: <%= @trip.notes %></p>
