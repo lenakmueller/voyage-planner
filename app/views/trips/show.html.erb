@@ -1,44 +1,61 @@
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))"> <%= cl_image_tag @trip.photo.key, format: :jpeg, height:150, width:500, crop: :fill %>
+  <div class="container">
+  <h1><%= @trip.title.upcase %></h1>
+  </div>
+</div>
+
 <div class="container">
-  <%= link_to "Back to trips", trips_path %>
-  <%= cl_image_tag @trip.photo.key, format: :jpeg, height:150, crop: :fill %>
-  <h1><%= @trip.title %></h1>
-  <p><span> <%= @trip.departure.strftime("%b %d") %> </span> to <span><%= @trip.return_day.strftime("%b %d, %Y") %> </span></p>
-  <p>Notes: <%= @trip.notes %></p>
-  <p><%= @trip.location %></p>
+
+  <div class= "edit">
+    <%= link_to "Delete",
+      trips_path(@trip),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %>
+    <i class="fa-solid fa-trash-can"></i>
+    <%= link_to "Update", edit_trip_path(@trip) %>
+    <i class="fa-solid fa-pen"></i>
+  </div>
+  <%= link_to "Back to trips", trips_path, class: "btn" %>
+
+  <div class="tripinfo">
+    <p><span> <%= @trip.departure.strftime("%b %d") %> </span> to <span><%= @trip.return_day.strftime("%b %d, %Y") %> </span></p>
+    <p><%= @trip.notes %></p>
+    <h2><%= @trip.location %></h2>
+  </div>
 
   <div class="container">
-    <%= form_with url: trip_path, method: :get, class: "d-flex" do %>
+    <%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
         placeholder: "Add a friend to your trip"
       %>
       <%= submit_tag "", class: "btn-search" %>
-      <i class="fa-solid fa-magnifying-glass"></i>
+<i class="fa-solid fa-user-group"></i>
     <% end %>
 
-    <div>
+    <div class="friend-list">
       <% if @friends.present? %>
         <% @friends.flatten.each do |friend| %>
-          <li> <%= friend["email"] %> </li>
+          <li> @<%= friend["nickname"].downcase %> </li>
         <% end %>
       <% end %>
     </div>
   </div>
 
-  <div>
-    <%= link_to "Delete trip",
-      trips_path(@trip),
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-    %>
-    <%= link_to "Update trip", edit_trip_path(@trip) %>
-  </div>
+  <div class="comp-menu">
+    <div class="comp-menu-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <%= link_to "Activities",  new_trip_activity_path(@trip) %>
+    </div>
 
-  <ul>
-    <li><%= link_to "Activities",  new_trip_activity_path(@trip) %></li>
-    <li><%= link_to "Transportation",  new_trip_transportation_path(@trip) %></li>
-    <li><%= link_to "Accommodation",  new_trip_accommodation_path(@trip) %></li>
-  </ul>
+    <div class="comp-menu-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
+      <%= link_to "Transport",  new_trip_transportation_path(@trip) %>
+    </div>
+
+    <div class="comp-menu-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
+      <%= link_to "Booking",  new_trip_accommodation_path(@trip) %>
+    </div>
+  </div>
 
   <div>
     <h3>Accommodations</h3>
