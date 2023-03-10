@@ -13,9 +13,8 @@
     <% end %>
   </div>
 
-    <div class="d-grid gap-2 d-md-block">
-     <%= link_to "Add a trip", new_trip_path, class: "btn" %>
-    </div>
+    <a class="btn" <%= link_to 'Add a new trip', new_trip_path %>
+    </a>
 
   <div class="wrapper">
     <h2 class="index header">Your upcoming trips</h2>

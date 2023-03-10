@@ -6,6 +6,19 @@
   border-radius: 50%;
   opacity: .8;
   font-size: 15px;
+  border: none;
+
+}
+
+.friend-form {
+  position: relative;
+}
+
+.fa-user-group {
+  position: absolute;
+  bottom: 30px;
+  right: 25px;
+  color: white;
 }
 
 .form-search {
