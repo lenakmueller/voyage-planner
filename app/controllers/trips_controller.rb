@@ -68,11 +68,11 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-
+    @trip.user = current_user
     if @trip.save
       redirect_to trip_path(@trip), notice: 'Trip was successfully added.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -96,6 +96,6 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:title, :departure, :location, :return_day, :notes, photos: [])
+    params.require(:trip).permit(:title, :departure, :location, :return_day, :notes, :photo)
   end
 end
