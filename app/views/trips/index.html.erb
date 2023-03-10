@@ -13,18 +13,19 @@
     <% end %>
   </div>
 
-  <h2 class="index header">Your upcoming trips</h2>
-    <div class="cards">
-      <% @upcoming.each do |trip| %>
-        <%= render "shared/card_trip", trip:trip %>
-      <% end %>
-    </div>
-
-  <h2 class="index header"> Your previous trips </h2>
+  <div class="wrapper">
+    <h2 class="index header">Your upcoming trips</h2>
       <div class="cards">
-      <% @previous.each do |trip| %>
-        <%= render "shared/card_trip", trip:trip %>
-      <% end %>
+        <% @upcoming.each do |trip| %>
+          <%= render "shared/card_trip", trip:trip %>
+        <% end %>
       </div>
 
+    <h2 class="index header"> Your previous trips </h2>
+        <div class="cards">
+        <% @previous.each do |trip| %>
+          <%= render "shared/card_trip", trip:trip %>
+        <% end %>
+        </div>
+  </div>
 </div>
