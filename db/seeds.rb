@@ -25,7 +25,7 @@ london = { title: "London calling", location: "London", departure: "13.03.2023",
 [greece, paris, canada, copenhagen, norway, patagonia].each do |attributes|
   # file = URI.open(images[index])
   trip = Trip.new(attributes)
-  # trip.photos.attach(io: file, filename: "trip.png", content_type: "image/png")
+  # trip.photo.attach(io: file, filename: "trip.png", content_type: "image/png")
   trip.save!
   puts "Created #{trip.title}"
 end
@@ -35,7 +35,7 @@ greece = Trip.first
 [london].each do |attributes|
   # file = URI.open(images[index])
   trip = Trip.new(attributes)
-  # trip.photos.attach(io: file, filename: "trip.png", content_type: "image/png")
+  # trip.photo.attach(io: file, filename: "trip.png", content_type: "image/png")
   trip.save!
   puts "Created #{trip.title}"
 end
