@@ -5,7 +5,7 @@
 }
 
 .accommodation_mode-item {
-  flex: 0 0 30%;
+  flex: 0 0 15%;
 }
 
 .accommodation_mode-selector {
@@ -18,62 +18,130 @@
   cursor: pointer;
   box-sizing: border-box;
   width: 100%;
-  font-size: 12px;
+  font-size: 22px;
   text-align: center;
-  padding: 10px 10px 30px 10px;
+  padding: 10px 5px 10px 5px;
   border: 1px solid #EAEAEA;
   border-radius: 4px;
   background-color: white;
 }
 
 .accommodation_mode-selector:checked + label {
-  color: white !important;
+  color: black !important;
 }
 
 
 #accommodation_accommodation_mode_hotel + label {
-  color: #FD1015;
+  color: grey;
 }
 
 #accommodation_accommodation_mode_hotel:checked + label {
-  background-color: #FD1015;
-  border-color: #FD1015;
+  background-color: white;
+  border-color: grey;
 }
 
 
 #accommodation_accommodation_mode_hostel + label {
-  color: #FFC65A;
+  color: grey;
 }
 
 #accommodation_accommodation_mode_hostel:checked + label {
-  background-color: #FFC65A;
-  border-color: #FFC65A;
+  background-color: white;
+  border-color: grey;
 }
 
 
 #accommodation_accommodation_mode_appartment + label {
-  color: #62DDF5;
+  color: grey;
 }
 
 #accommodation_accommodation_mode_appartment:checked + label {
-  background-color: #62DDF5;
-  border-color: #62DDF5;
+  background-color: white;
+  border-color: grey;
 }
 
 #accommodation_accommodation_mode_airbnb + label {
-  color: #03b606;
+  color: grey;
 }
 
 #accommodation_accommodation_mode_airbnb:checked + label {
-  background-color: #03b606;
-  border-color: #03b606;
+  background-color: white;
+  border-color: grey;
 }
 
 #accommodation_accommodation_mode_camping + label {
-  color: #e69900;
+  color: grey;
 }
 
 #accommodation_accommodation_mode_camping:checked + label {
-  background-color: #e69900;
-  border-color: #e69900;
+  background-color: white;
+  border-color: grey;
+}
+
+#accommodation_accommodation_mode_castle + label {
+  color: grey;
+}
+
+#accommodation_accommodation_mode_castle:checked + label {
+  background-color: white;
+  border-color: grey;
+}
+
+.container{
+  width: 80%;
+}
+
+#back_button {
+  color: #D9D9D9;
+}
+
+#back_button:hover {
+  color: black;
+}
+
+.save {
+  background-color: #D9D9D9;
+  color: black;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-style: none;
+}
+
+.save:hover {
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  border-color: grey;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-style: none;
+}
+
+.form-accommodation {
+  padding: 5% 10%;
+  background-color: #5A7684;
+  color: white;
+}
+
+#h1-color {
+  color: white;
+}
+
+.form-activities {
+  padding: 5% 10%;
+  background-color: grey;
+  color: white;
+}
+
+.form-control {
+  background-color: #D9D9D9;
+}
+
+.form-select{
+  background-color: #D9D9D9;
+}
+
+.mapboxgl-ctrl-geocoder input {
+  background-color: #D9D9D9;
 }

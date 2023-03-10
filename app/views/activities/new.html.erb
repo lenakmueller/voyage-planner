@@ -1,14 +1,22 @@
-<h1>New Activity</h1>
 
-<%= simple_form_for [@trip, @activity] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :booking_ref %>
-  <%= f.input :date, as: :date, html5: true %>
-  <%= f.input :start_time, as: :time, html5: true %>
-  <%= f.input :end_time, as: :time, html5: true %>
-  <%= f.input :notes %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit "Add activity" %>
-<% end %>
+  <div class="form-activities">
+    <h1 class="text-center fs-1" id="h1-color">Add your activity</h1>
+    <%= simple_form_for [@trip, @activity] do |f| %>
 
-<%= link_to "Back", trip_path(@trip) %>
+      <%= f.input :name %>
+      <%= f.input :booking_ref %>
+      <%= f.input :date, as: :date, html5: true %>
+      <%= f.input :start_time, as: :time, html5: true %>
+      <%= f.input :end_time, as: :time, html5: true %>
+      <%= f.input :notes %>
+      <%= f.input :photo, as: :file, label: "Document Upload" %>
+      <div class="py-3">
+        <%= f.submit "Save", class: "save" %>
+      </div>
+    <% end %>
+
+    <%= link_to trip_path(@trip), class: "d-flex justify-content-end text-decoration-none mb-3" do %>
+      <i class="fa-regular fa-circle-left fs-1" id="back_button"></i></i>
+    <% end %>
+
+  </div>

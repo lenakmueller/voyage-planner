@@ -10,7 +10,7 @@ class Accommodation < ApplicationRecord
 
   validate :at_least_one_field_present
 
-  enum accommodation_mode: { hotel: 0, hostel: 1, appartment: 2, airbnb: 3, camping: 4 }
+  enum accommodation_mode: { hotel: 0, hostel: 1, appartment: 2, airbnb: 3, camping: 4, castle: 5 }
 
   #CATEGORIES = ["hotel", "hostel", "appartment", "airbnb", "camping"]
 
@@ -18,7 +18,8 @@ class Accommodation < ApplicationRecord
                 ["hostel", "<i class='fa-solid fa-bed'></i>"],
                 ["appartment", "<i class='fa-solid fa-building'></i>"],
                 ["airbnb", "<i class='fa-brands fa-airbnb'></i>"],
-                ["camping", "<i class='fa-solid fa-campground'></i>"]]
+                ["camping", "<i class='fa-solid fa-campground'></i>"],
+                ["castle", "<i class='fa-solid fa-chess-rook'></i>"]]
 
   private
 
