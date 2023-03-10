@@ -28,9 +28,13 @@
 
   </div>
 
-  <%= f.submit "Save", class: "save"%>
-  <%= link_to trip_path(@trip), class: "d-flex justify-content-end text-decoration-none mb-3" do %>
-  <i class="fa-regular fa-circle-left fs-1" id="transportation_back_button"></i></i>
+  <div class="py-3">
+        <%= f.submit "Save", class: "save" %>
+      </div>
+
+
+  <%= link_to trip_path(@trip), class: "d-flex justify-content-end text-decoration-none mb-5 pb-5" do %>
+  <i class="fa-regular fa-circle-left fs-1" id="back_button"></i></i>
 <% end %>
 </div>
 <% end %>
