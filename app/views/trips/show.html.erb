@@ -50,17 +50,24 @@
     </div>
   </div>
 
-  <div class="comp-menu">
-    <div class="comp-menu-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      <%= link_to "Activities",  new_trip_activity_path(@trip) %>
-    </div>
-
-    <div class="comp-menu-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
-      <%= link_to "Transport",  new_trip_transportation_path(@trip) %>
-    </div>
-
-    <div class="comp-menu-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-      <%= link_to "Booking",  new_trip_accommodation_path(@trip) %>
+  <div class="floating-container">
+    <div class="floating-button">+</div>
+    <div class="element-container">
+        <span class="float-element tooltip-left">
+          <%= link_to new_trip_activity_path(@trip) do %>
+            <i class="fa-solid fa-child-reaching"></i>
+          <% end %>
+        </span>
+        <span class="float-element">
+          <%= link_to new_trip_transportation_path(@trip) do %>
+            <i class="fa-solid fa-sailboat"></i>
+          <% end %>
+        </span>
+        <span class="float-element">
+          <%= link_to new_trip_accommodation_path(@trip) do %>
+            <i class="fa-solid fa-bed"></i>
+          <% end %>
+      </span>
     </div>
   </div>
 
