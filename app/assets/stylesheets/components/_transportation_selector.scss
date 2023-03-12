@@ -5,7 +5,7 @@
 }
 
 .transport_mode-item {
-  flex: 0 0 30%;
+  flex: 0 0 15%;
 }
 
 .transport_mode-selector {
@@ -18,62 +18,82 @@
   cursor: pointer;
   box-sizing: border-box;
   width: 100%;
-  font-size: 12px;
+  font-size: 22px;
   text-align: center;
-  padding: 10px 10px 30px 10px;
+  padding: 10px 5px 10px 5px;
   border: 1px solid #EAEAEA;
   border-radius: 4px;
   background-color: white;
 }
 
 .transport_mode-selector:checked + label {
-  color: red !important;
+  color: black !important;
 }
 
 
 #transportation_transport_mode_flight + label {
-  color: #FD1015;
+  color:grey;
 }
 
 #transportation_transport_mode_flight:checked + label {
-  background-color: #FD1015;
-  border-color: #FD1015;
+  background-color: white;
+  border-color: grey;
 }
 
 
 #transportation_transport_mode_train + label {
-  color: #FFC65A;
+  color: grey;
 }
 
 #transportation_transport_mode_train:checked + label {
-  background-color: #FFC65A;
-  border-color: #FFC65A;
+  background-color: white;
+  border-color: grey;
 }
 
 
 #transportation_transport_mode_boat + label {
-  color: #62DDF5;
+  color: grey;
 }
 
 #transportation_transport_mode_boat:checked + label {
-  background-color: #62DDF5;
-  border-color: #62DDF5;
+  background-color: white;
+  border-color: gray;
 }
 
 #transportation_transport_mode_bike + label {
-  color: #369a00;
+  color: grey;
 }
 
 #transportation_transport_mode_bike:checked + label {
-  background-color: #369a00;
-  border-color: #369a00;
+  background-color: white;
+  border-color: grey;
 }
 
 #transportation_transport_mode_car + label {
-  color: #d4ff00;
+  color: grey;
 }
 
 #transportation_transport_mode_car:checked + label {
-  background-color: #d4ff00;
-  border-color: #d4ff00;
+  background-color: white;
+  border-color: grey;
+}
+
+#transportation_transport_mode_campervan + label {
+  color: grey;
+}
+
+#transportation_transport_mode_campervan:checked + label {
+  background-color: white;
+  border-color: grey;
+}
+
+.transportation_form{
+  padding: 5% 10%;
+  background-color: #9FB7B9;
+  color: white
+}
+
+#transportation_ride{
+  background-color: #9FB7B9;
+  color: white;
 }

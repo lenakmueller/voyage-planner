@@ -1,11 +1,25 @@
 .btn-search {
-  color: #3A506B;
-  background-color: #3A506B;
+  color: #5A7684;
+  background-color: #5A7684;
   padding: 10px 35px 11px 10px;
   margin: 12px 12px 14px -8px;
   border-radius: 50%;
   opacity: .8;
   font-size: 15px;
+  border: none;
+
+}
+
+.friend-form {
+  position: relative;
+  margin-top: 30px;
+}
+
+.fa-user-group {
+  position: absolute;
+  bottom: 30px;
+  right: 25px;
+  color: white;
 }
 
 .form-search {
@@ -20,6 +34,7 @@
   border: 1.5px solid #5A7684;
   border-radius: 2.25rem;
   text-align: center;
+  width: 80%;
 }
 
 .btn-search:hover {

@@ -16,5 +16,6 @@ class Transportation < ApplicationRecord
                 ["train", "<i class='fa-solid fa-train'></i>"],
                 ["boat", "<i class='fa-solid fa-ship'></i>"],
                 ["bike", "<i class='fa-solid fa-bicycle'></i>"],
+                ["campervan", "<i class='fa-solid fa-caravan'></i>"],
                 ["car", "<i class='fa-solid fa-car'></i>"]]
 end
