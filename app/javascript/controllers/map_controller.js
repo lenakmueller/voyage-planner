@@ -11,8 +11,34 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/mapbox/streets-v10",
+
+
     })
+
+    // const mapDiv = document.querySelector('.mapboxgl-canvas-container');
+    // if (mapDiv.style.visibility === true) this.map.resize();
+
+    // this.map.on('load', function () { this.map.resize() })
+
+  //   map.on('load', function() {
+  //     $('.mapboxgl-canvas').css('width', '100%');
+  //     $('.mapboxgl-canvas').css('height', '100%');
+  //     map.resize();
+  // });
+
+//   this.map.on('load', function() {
+//     var mapCanvas = document.getElementsByClassName('mapboxgl-canvas')[0];
+//     var mapDiv = document.getElementById('map');
+//     var breakButton = document.getElementById('resizeDiv');
+//     var fixButton = document.getElementById('resizeMap');
+
+
+//     fixButton.onclick = function() {
+//         map.resize();
+//     }
+
+// })
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
