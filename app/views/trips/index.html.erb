@@ -13,18 +13,23 @@
     <% end %>
   </div>
 
-    <a class="btn" <%= link_to 'Add a new trip', new_trip_path %>
-    </a>
+  <div class ="add-trip">
+    <%= link_to new_trip_path do %>
+      <i class="fa-solid fa-plus"></i>
+    <% end %>
+  </div>
+
+
 
   <div class="wrapper">
-    <h2 class="index header">Your upcoming trips</h2>
+    <h2 class="index-header">Your upcoming trips</h2>
       <div class="cards">
         <% @upcoming.each do |trip| %>
           <%= render "shared/card_trip", trip:trip %>
         <% end %>
       </div>
 
-    <h2 class="index header"> Your previous trips </h2>
+    <h2 class="index-header"> Your previous trips </h2>
         <div class="cards">
         <% @previous.each do |trip| %>
           <%= render "shared/card_trip", trip:trip %>
