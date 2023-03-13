@@ -45,7 +45,7 @@
       <% if @friends.present? %>
         <% @friends.flatten.each do |friend| %>
           <li> @<%= friend["nickname"].downcase %> </li>
-          <!-- <li> <%= cl_image_tag friend.photo.key, class: "avatar dropdown-toggle" %> </li> -->
+          <!-- <li> <%#= cl_image_tag friend.photo.key, class: "avatar dropdown-toggle" %> </li> -->
         <% end %>
       <% end %>
     </div>
