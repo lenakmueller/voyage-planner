@@ -1,13 +1,15 @@
 <div class="banner">
   <% if @trip.photo.attached? %>
-    <%= cl_image_tag trip.photo.key, height: 150, width: 500, crop: :fill %>
+    <%#= cl_image_tag @trip.photo.key, class: "banner-img", crop: :fill %>
+    <div class="card-category"
+         style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @trip.photo.key, crop: :fill %>'); background-repeat: no-repeat; background-size: cover; height: 300px; background-position: center;">
+    </div>
   <% else %>
       <img class="banner-img" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" crop= "fill" >
   <% end %>
   <div class="trip-info">
     <h1><%= @trip.title.upcase %></h1>
     <h2><span> <%= @trip.departure.strftime("%b %d") %> </span> to <span><%= @trip.return_day.strftime("%b %d, %Y") %> </span></h2>
-    <%# <p><%= @trip.notes %></p>
     <p>📍<%= @trip.location %></p>
   </div>
   <div class ="edit-trip">
@@ -28,23 +30,22 @@
 
 
 
-<%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Add a friend to your trip"
-      %>
-      <%= submit_tag "", class: "btn-search" %>
-<i class="fa-solid fa-user-group"></i>
-    <% end %>
+  <%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Add a friend to your trip" %>
+    <%= submit_tag "", class: "btn-search" %>
+      <i class="fa-solid fa-user-group"></i>
+  <% end %>
 
   <div class="container">
-
 
     <div class="friend-list">
       <% if @friends.present? %>
         <% @friends.flatten.each do |friend| %>
           <li> @<%= friend["nickname"].downcase %> </li>
+          <!-- <li> <%= cl_image_tag friend.photo.key, class: "avatar dropdown-toggle" %> </li> -->
         <% end %>
       <% end %>
     </div>
@@ -153,7 +154,6 @@
     </div>
   <%= render "shared/footer" %>
   </div>
-
-
-    <%# <%= cl_image_tag @trip.transportations.last.photo.key, format: :jpeg, height:150, crop: :fill %>
 </div>
+
+    <%#= cl_image_tag @trip.transportations.last.photo.key, format: :jpeg, height:150, crop: :fill %>
