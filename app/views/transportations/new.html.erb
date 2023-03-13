@@ -1,6 +1,9 @@
 
 <div class="transportation_form">
-  <h1 class="text-center fs-1" id="transportation_ride">Add your ride</h1>
+  <%= link_to trip_path(@trip), class: "d-flex justify-content-start text-decoration-none" do %>
+      <i class="fa-solid fa-arrow-left" id="back_button"></i>
+  <% end %>
+  <h1 class="text-center fs-1 py-4" id="transportation_ride">Add your ride</h1>
   <%= simple_form_for [@trip, @transportation] do |f| %>
   <div class="transport_mode-wrapper py-3">
     <input type="hidden" name="transportation[transport_mode]" value="" autocomplete="off">
@@ -32,11 +35,6 @@
   <div class="py-5">
         <%= f.submit "Save", class: "save" %>
       </div>
-
-
-  <%= link_to trip_path(@trip), class: "d-flex justify-content-end text-decoration-none mb-5 pb-5" do %>
-  <i class="fa-regular fa-circle-left fs-1" id="back_button"></i></i>
-<% end %>
 </div>
 <% end %>
 

@@ -1,11 +1,11 @@
-<div class="background new">
-  <div class="container">
+<div class="background_new">
+  <%= link_to trips_path(@trip), class: "d-flex justify-content-start text-decoration-none" do %>
+        <i class="fa-solid fa-arrow-left" id="back_button_new"></i>
+  <% end %>
+
+
     <h1 class="text-center py-4 fs-1">Where to next?</h1>
     <div class="col-12 col-md-6 row justify-content-center mx-auto pb-5">
       <%= render "form", trip: @trip %>
     </div>
-      <%= link_to trips_path(@trip), class: "d-flex justify-content-end text-decoration-none mb-5 pb-5 me-3" do %>
-        <i class="fa-regular fa-circle-left fs-1" id="back_button_edit"></i>
-      <% end %>
-  </div>
 </div>
