@@ -13,8 +13,7 @@
         <% if trip.user.photo.attached? %>
           <%= cl_image_tag trip.user.photo.key, class: "card-trip-user avatar-bordered" %>
         <% else %>
-          <%#= cl_image_tag("https://res.cloudinary.com/djdcsvkqa/image/upload/v1677859505/production/7hstpkqimopvl3pt2czx7r0clplg.jpg", :width => 40, class: "profile-avatar card-trip-user", :id => "navbarDropdown", :data => { bs_toggle: "dropdown" } ) %>
-          <% <img src="https://static.vecteezy.com/ti/gratis-vektor/t2/5545335-benutzerzeichen-symbol-person-symbol-mensch-avatar-isoliert-auf-weiss-backogrund-vektor.jpg" class="card-trip-user avatar-bordered" /> %>
+          <img src="https://static.vecteezy.com/ti/gratis-vektor/t2/5545335-benutzerzeichen-symbol-person-symbol-mensch-avatar-isoliert-auf-weiss-backogrund-vektor.jpg" class="card-trip-user avatar-bordered" />
         <% end %>
       </div>
   </div>

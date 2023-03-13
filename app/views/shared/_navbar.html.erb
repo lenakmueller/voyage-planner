@@ -7,7 +7,6 @@
       <% if current_user.photo.attached? %>
         <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <% else %>
-      <%#= cl_image_tag current_user.photo.key, width: 40, class: "profile-avatar", id: "navbarDropdown", data: { bs_toggle: "dropdown" }  %>
         <i class="fa-solid fa-circle-user" id="navbarDropdown" data-bs-toggle="dropdown"></i>
       <% end %>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
