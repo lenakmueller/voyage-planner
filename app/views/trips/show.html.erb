@@ -1,3 +1,7 @@
+
+<%= render "shared/navbar" %>
+
+
 <div class="banner">
   <% if @trip.photo.attached? %>
     <%#= cl_image_tag @trip.photo.key, class: "banner-img", crop: :fill %>
@@ -14,12 +18,13 @@
   </div>
   <div class ="edit-trip">
     <%= link_to edit_trip_path(@trip) do %>
-      <i class="fa-solid fa-pen"></i>
+      <i class="fa-solid fa-pen border border-1"></i>
     <% end %>
   </div>
 </div>
 
 <div class="container">
+
 
 <%# DELETE METHOD %>
     <%# <%= link_to "Delete", %>
