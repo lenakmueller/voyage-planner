@@ -1,0 +1,34 @@
+.comp-card-info {
+  display: grid;
+  align-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  width: 280px;
+  height: 200px;
+  margin: 70px 30px;
+  background-color: #9FB7B9;
+  opacity: 60%;
+}
+
+.comp-card-info p {
+  line-height: 1.5;
+}
+
+.spaceholder {
+  text-align: center;
+  line-height: 2;
+  letter-spacing: 10px;
+  font-weight: 300;
+  opacity: 70%;
+}
+
+.fa-calendar-plus {
+  color: #5A7684;
+  font-size: 100px;
+  opacity: 30%;
+  margin-top: 10px;
+}
+
+.box {
+  margin: 50px 30px;
+}
