@@ -22,13 +22,14 @@
 
   <div>
   <div class="input-container">
-        <%= f.input :photo, as: :file, label: "Document Upload"%>
+        <%= f.input :photo, as: :file, label: "Upload", class: "input-load"%>
+          <i class="fa-solid fa-upload"></i>
   </div>
 
 
   </div>
 
-  <div class="py-3">
+  <div class="py-5">
         <%= f.submit "Save", class: "save" %>
       </div>
 
