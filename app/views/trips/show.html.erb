@@ -1,3 +1,7 @@
+
+<%= render "shared/navbar" %>
+
+
 <div class="banner">
   <% if @trip.photo.attached? %>
     <%#= cl_image_tag @trip.photo.key, class: "banner-img", crop: :fill %>
@@ -10,16 +14,18 @@
   <div class="trip-info">
     <h1><%= @trip.title.upcase %></h1>
     <h2><span> <%= @trip.departure.strftime("%b %d") %> </span> to <span><%= @trip.return_day.strftime("%b %d, %Y") %> </span></h2>
-    <p>📍<%= @trip.location %></p>
+    <%# <p><%= @trip.notes %></p>
+    <p> 📍 <%= @trip.location %></p>
   </div>
   <div class ="edit-trip">
     <%= link_to edit_trip_path(@trip) do %>
-      <i class="fa-solid fa-pen"></i>
+      <i class="fa-solid fa-pen border border-1"></i>
     <% end %>
   </div>
 </div>
 
 <div class="container">
+
 
 <%# DELETE METHOD %>
     <%# <%= link_to "Delete", %>
@@ -72,50 +78,46 @@
     </div>
   </div>
 
-  <div>
-    <h3>Accommodations</h3>
-    <div class="component">
-      <% @accommodations.each do |item| %>
-        <div>
-          <p><span> <%= item.departure.strftime("%B %e %Y")  %> </span> - <span> <%= item.return_day.strftime("%B %e %Y")  %> </span></p>
-          <p> <%= item.booking_ref  %> </p>
-          <p> <%= item.location  %> </p>
+  <div class=box>
+    <% if @trip.accommodations.empty? %>
+        <p></p>
+    <% else %>
+        <% @accommodations.each do |item| %>
+      <div class="comp-card-info">
+          <div class="acc-items">
+            <p><span><strong> <%= item.departure.strftime("%B %e")  %> </span> - <span> <%= item.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
+            <p>📍 <%= item.location  %> </p>
+            <%# <p> <%= item.booking_ref  %>
+          </div>
+      </div>
+        <% end %>
+    <% end %>
 
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div>
-    <h3>Activities</h3>
-    <div class="component">
+    <% if @trip.activities.empty? %>
+      <p></p>
+    <% else %>
       <% @activities.each do |item| %>
-        <div>
+        <div class="comp-card-info">
           <p> <%= item.name  %> </p>
-          <p> <%= item.booking_ref  %> </p>
-          <p> <%= item.date.strftime("%B %e %Y")  %> </p>
-
-          <p> <%= item.location  %> </p>
-          <p><span> <%= item.start_time.strftime("%l:%M %p")  %> </span> - <span> <%= item.end_time.strftime("%l:%M %p")  %> </span></p>
-
+          <p><strong> <%= item.date.strftime("%B %e, %Y")  %></strong></p>
+          <p><span><strong> <%= item.start_time.strftime("%l:%M %p")  %> </span> - <span> <%= item.end_time.strftime("%l:%M %p")  %></strong> </span></p>
+          <p class= "address">📍 <%= item.location  %> </p>
         </div>
       <% end %>
-    </div>
-  </div>
+    <% end %>
 
-  <div>
-    <h3>Transportations</h3>
-    <div class="component">
+    <% if @trip.transportations.empty? %>
+      <h2 class="spaceholder">START PLANNING</h2>
+      <p class="spaceholder"><i class="fa-regular fa-calendar-plus"></i></p>
+    <% else %>
       <% @transportations.each do |item| %>
-        <div>
-          <p><span> <%= item.departure.strftime("%B %e %Y")  %> </span> - <span> <%= item.return_day.strftime("%B %e %Y")  %> </span></p>
-          <p> <%= item.transport_mode  %> </p>
-          <p> <%= item.booking_ref  %> </p>
-          <p> <%= item.location  %> </p>
-
+        <div class="comp-card-info">
+          <p><span><strong> <%= item.departure.strftime("%B %e")  %> </span> - <span> <%= item.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
+          <p>📍 <%= item.location  %> </p>
+          <%# <p> <%= item.booking_ref  %>
         </div>
       <% end %>
-    </div>
+    <% end %>
   </div>
 
   <div data-controller="map"

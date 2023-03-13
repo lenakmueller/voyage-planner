@@ -1,5 +1,10 @@
 #back_button {
   color: white;
+  font-size: 15px;
+  border-radius: 50%;
+  border-color: white;
+  border: solid;
+  padding: 15px;
 }
 
 #back_button:hover {
@@ -7,9 +12,27 @@
 }
 
 #back_button_edit {
-  color: grey;
+  color: white;
+  font-size: 15px;
+  border-radius: 50%;
+  border-color: white;
+  border: solid;
+  padding: 15px;
 }
 
 #back_button_edit:hover {
-  color: #D9D9D9;
+  color: grey;
+}
+
+#back_button_new:hover {
+  color: grey;
+}
+
+#back_button_new {
+  color: white;
+  font-size: 15px;
+  border-radius: 50%;
+  border-color: white;
+  border: solid;
+  padding: 15px;
 }
