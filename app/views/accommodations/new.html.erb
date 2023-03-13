@@ -1,6 +1,9 @@
 
   <div class="form-accommodation">
-    <h1 class="text-center fs-1" id="h1-color">Add your stay</h1>
+    <%= link_to trip_path(@trip), class: "d-flex justify-content-start text-decoration-none" do %>
+      <i class="fa-solid fa-arrow-left" id="back_button"></i>
+    <% end %>
+    <h1 class="text-center fs-1 py-4" id="h1-color">Add your stay</h1>
 
     <%= simple_form_for [@trip, @accommodation], input_html: { multiple: true } do |f| %>
       <div class="accommodation_mode-wrapper py-3">
@@ -19,23 +22,18 @@
       <%= f.input :departure, as: :date, html5: true %>
       <%= f.input :return_day, as: :date, html5: true %>
       <%= f.input :notes %>
-      <%= f.input :photo, as: :file, label: "Document Upload" %>
 
-
-
-
-      <div class="py-3">
+      <div class="input-container">
+        <%= f.input :photo, as: :file, label: "Upload", class: "input-load"%>
+          <i class="fa-solid fa-upload"></i>
+  </div>
+      <div class="py-5">
         <%= f.submit "Save", class: "save" %>
       </div>
     <% end %>
 
-    <%= link_to trip_path(@trip), class: "d-flex justify-content-end text-decoration-none mb-5 pb-5" do %>
-      <i class="fa-regular fa-circle-left fs-1" id="back_button"></i>
-    <% end %>
+
   </div>
-
-
-
 
 
 

@@ -1,5 +1,11 @@
-<div class="container">
-  <h2 class="text-center my-4">Change data?</h2>
+<div class="background_edit">
+  <%= link_to trip_path(@trip), class: "d-flex justify-content-start text-decoration-none" do %>
+      <i class="fa-solid fa-arrow-left" id="back_button_edit"></i>
+  <% end %>
+
+
+
+  <h1 class="text-center my-4 fs-1"><%= @trip.title %></h1>
   <div class="col-12 col-md-6 row justify-content-center mx-auto pb-5">
     <%= render "form", trip: @trip %>
   </div>

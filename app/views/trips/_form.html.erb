@@ -16,8 +16,15 @@
           <%= f.input :return_day, as: :date, html5: true, label: 'End Date' %>
         </div>
         <%= f.input :notes, :as => :text %>
-        <%= f.input :photo, as: :file %>
+        <div class="input-container">
+          <%= f.input :photo, as: :file, label: "Upload", class: "input-load"%>
+          <i class="fa-solid fa-upload"></i>
+        </div>
+  </div>
       </div>
-      <%= f.submit 'SAVE', class: "btn" %>
+
+      <div class="py-5">
+        <%= f.submit "Save", class: "save" %>
+      </div>
     </div>
   <% end %>

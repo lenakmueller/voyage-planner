@@ -18,6 +18,7 @@ class AccommodationsController < ApplicationController
     end
   end
 
+
   private
 
   def set_trip

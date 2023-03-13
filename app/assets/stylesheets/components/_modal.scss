@@ -1,15 +1,31 @@
-.mapboxgl-canvas {
-  // width: auto !important;
-  // height: 100% !important;
-  // aspect-ratio: 1 / 2;
-  // width: 70vw !important;
-  // height: 70vh !important;
+.close-modal {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 1000;
+  border-radius: 50%;
 }
 
-// .map-wrapper {
-//   aspect-ratio: 1 / 1;
-// }
+.fa-xmark {
+  font-size: 20px;
+}
 
-.modal-map {
-  display: none;
+.modal-parent {
+  position: relative;
+}
+
+.open-modal {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.fa-arrows-up-down-left-right {
+  font-size: 20px;
 }
