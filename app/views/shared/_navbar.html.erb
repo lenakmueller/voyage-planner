@@ -4,11 +4,11 @@
       <i class="fi fi-tr-earth-africa"></i>
     <% end %>
     <% if user_signed_in? %>
-      <% if current_user.avatar.attached? %>
-        <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <% else %>
-      <%= cl_image_tag("https://res.cloudinary.com/djdcsvkqa/image/upload/v1677859505/production/7hstpkqimopvl3pt2czx7r0clplg.jpg", :width => 40, class: "profile-avatar", :id => "navbarDropdown", :data => { bs_toggle: "dropdown" } ) %>
-        <%# <i class="fa-solid fa-circle-user" id="navbarDropdown" data-bs-toggle="dropdown"></i> %>
+      <%#= cl_image_tag current_user.photo.key, width: 40, class: "profile-avatar", id: "navbarDropdown", data: { bs_toggle: "dropdown" }  %>
+        <i class="fa-solid fa-circle-user" id="navbarDropdown" data-bs-toggle="dropdown"></i>
       <% end %>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
         <%= link_to "Add a trip", new_trip_path, class: "dropdown-item" %>
