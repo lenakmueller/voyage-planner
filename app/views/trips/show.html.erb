@@ -75,47 +75,41 @@
     <% if @trip.accommodations.empty? %>
         <p></p>
     <% else %>
-      <div class="comp-card-info">
         <% @accommodations.each do |item| %>
-          <div>
+      <div class="comp-card-info">
+          <div class="acc-items">
             <p><span><strong> <%= item.departure.strftime("%B %e")  %> </span> - <span> <%= item.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
             <p>📍 <%= item.location  %> </p>
             <%# <p> <%= item.booking_ref  %>
           </div>
-        <% end %>
       </div>
+        <% end %>
     <% end %>
 
     <% if @trip.activities.empty? %>
-        <p></p>
+      <p></p>
     <% else %>
-      <div class="comp-card-info">
-        <% @activities.each do |item| %>
-          <div>
-            <p> <%= item.name  %> </p>
-            <p><strong> <%= item.date.strftime("%B %e, %Y")  %></strong></p>
-            <p><span><strong> <%= item.start_time.strftime("%l:%M")  %> </span> - <span> <%= item.end_time.strftime("%l:%M %p")  %></strong> </span></p>
-            <p class= "address">📍 <%= item.location  %> </p>
-            <%# <p> <%= item.booking_ref  %>
-          </div>
-        <% end %>
-      </div>
+      <% @activities.each do |item| %>
+        <div class="comp-card-info">
+          <p> <%= item.name  %> </p>
+          <p><strong> <%= item.date.strftime("%B %e, %Y")  %></strong></p>
+          <p><span><strong> <%= item.start_time.strftime("%l:%M %p")  %> </span> - <span> <%= item.end_time.strftime("%l:%M %p")  %></strong> </span></p>
+          <p class= "address">📍 <%= item.location  %> </p>
+        </div>
+      <% end %>
     <% end %>
 
     <% if @trip.transportations.empty? %>
-        <h2 class="spaceholder">START PLANNING</h2>
-        <p class="spaceholder"><i class="fa-regular fa-calendar-plus"></i></p>
+      <h2 class="spaceholder">START PLANNING</h2>
+      <p class="spaceholder"><i class="fa-regular fa-calendar-plus"></i></p>
     <% else %>
-      <div class="comp-card-info">
-        <% @transportations.each do |item| %>
-          <div>
-            <%# <p> <%= item.transport_mode  %>
-            <p><span><strong> <%= item.departure.strftime("%B %e")  %> </span> - <span> <%= item.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
-            <p>📍 <%= item.location  %> </p>
-            <%# <p> <%= item.booking_ref  %>
-          </div>
-        <% end %>
-      </div>
+      <% @transportations.each do |item| %>
+        <div class="comp-card-info">
+          <p><span><strong> <%= item.departure.strftime("%B %e")  %> </span> - <span> <%= item.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
+          <p>📍 <%= item.location  %> </p>
+          <%# <p> <%= item.booking_ref  %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 

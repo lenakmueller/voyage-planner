@@ -29,6 +29,11 @@ class TripsController < ApplicationController
     }]
 
     @accommodations = @trip.accommodations
+    @activities = @trip.activities
+    @transportations = @trip.transportations
+
+    @components = [@accommodations, @transportations, @activities].flatten
+
     @accommodations.geocoded.map do |acc|
       el = {
         lat: acc.latitude,
@@ -39,7 +44,7 @@ class TripsController < ApplicationController
       @markers.push(el)
     end
 
-    @activities = @trip.activities
+
     @activities.geocoded.map do |act|
       el = {
         lat: act.latitude,
@@ -50,7 +55,7 @@ class TripsController < ApplicationController
       @markers.push(el)
     end
 
-    @transportations = @trip.transportations
+
     @transportations.geocoded.map do |trans|
       el = {
         lat: trans.latitude,
@@ -60,6 +65,9 @@ class TripsController < ApplicationController
       }
       @markers.push(el)
     end
+
+    @components.sort_by { |com| com.class.to_s == "Activity" ? com.date : com.departure }
+
   end
 
   def new
