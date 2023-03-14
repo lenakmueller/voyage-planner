@@ -14,11 +14,22 @@ class AccommodationsController < ApplicationController
     elsif @accommodation.errors[:base].include?("Please fill out at least one field")
       redirect_to new_trip_accommodation_path(@trip), alert: 'Please fill out at least one field'
     else
-      raise
       render :new, status: :unprocessable_entity
     end
   end
 
+  def edit
+    @accommodation = Accommodation.find(params[:id])
+  end
+
+  def update
+    @accommodation = Accommodation.find(params[:id])
+    @accommodation.update(accommodation_params)
+    if params["accommodation_mode"].nil?
+      @accommodation.accommodation_mode = @accommodation.accommodation_mode
+    end
+    redirect_to trip_path(@accommodation.trip)
+  end
 
   private
 

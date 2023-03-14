@@ -1,9 +1,8 @@
-<div class="form-activities">
+<div class="form-accommodation">
   <%= link_to trip_path(@trip), class: "d-flex justify-content-start text-decoration-none" do %>
     <i class="fa-solid fa-arrow-left" id="back_button"></i>
   <% end %>
-  <h1 class="text-center fs-1 py-4" id="h1-color">Add your activity</h1>
+  <h1 class="text-center fs-1 py-4" id="h1-color">Add your stay</h1>
 
-  <%= render "form_act", activities: @activities, trip: @trip %>
-
+  <%= render "form_acc", accommodation: @accommodation, trip: @trip %>
 </div>

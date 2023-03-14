@@ -1,39 +1,12 @@
+<div class="form-accommodation">
+  <%= link_to trip_path(@trip), class: "d-flex justify-content-start text-decoration-none" do %>
+    <i class="fa-solid fa-arrow-left" id="back_button"></i>
+  <% end %>
+  <h1 class="text-center fs-1 py-4" id="h1-color">Add your stay</h1>
 
-  <div class="form-accommodation">
-    <%= link_to trip_path(@trip), class: "d-flex justify-content-start text-decoration-none" do %>
-      <i class="fa-solid fa-arrow-left" id="back_button"></i>
-    <% end %>
-    <h1 class="text-center fs-1 py-4" id="h1-color">Add your stay</h1>
+  <%= render "form_acc", accommodation: @accommodation, trip: @trip %>
 
-    <%= simple_form_for [@trip, @accommodation], input_html: { multiple: true } do |f| %>
-      <div class="accommodation_mode-wrapper py-3">
-          <input type="hidden" name="accommodation[accommodation_mode]" value="" autocomplete="off">
-          <% Accommodation::CATEGORIES.each do |t_pair| %>
-            <div class="accommodation_mode-item">
-              <input class="form-check-input radio_buttons required accommodation_mode-selector" type="radio" value="<%= t_pair[0] %>" name="accommodation[accommodation_mode]" id="accommodation_accommodation_mode_<%= t_pair[0] %>">
-              <label class="form-check-label collection_radio_buttons" for="accommodation_accommodation_mode_<%= t_pair[0] %>"><%= sanitize t_pair[1] %></label>
-            </div>
-          <% end %>
-      </div>
-      <%= f.input :booking_ref %>
-      <%= f.input :location,
-        input_html: {data: {location_autocomplete_target: "location"}, class: 'd-none'},
-        wrapper_html: {data: {controller: "location-autocomplete", location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
-      <%= f.input :departure, as: :date, html5: true %>
-      <%= f.input :return_day, as: :date, html5: true %>
-      <%= f.input :notes %>
-
-      <div class="input-container">
-        <%= f.input :photo, as: :file, label: "Upload", class: "input-load"%>
-          <i class="fa-solid fa-upload"></i>
-  </div>
-      <div class="py-5">
-        <%= f.submit "Save", class: "save" %>
-      </div>
-    <% end %>
-
-
-  </div>
+</div>
 
 
 
