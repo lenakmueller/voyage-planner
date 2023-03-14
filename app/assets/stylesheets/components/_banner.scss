@@ -29,10 +29,20 @@
   margin-top: 25px;
 }
 
+.trip-info h1 {
+  text-shadow: 2px 2px 3px black;
+}
+
+.trip-info p {
+  text-shadow: 2px 2px 3px black;
+}
+
+
 .trip-info {
   position: absolute;
   bottom: 70px;
   left: 25px;
+  text-shadow: 2px 2px 3px black;
 }
 
 .edit-trip {
@@ -41,6 +51,7 @@
   bottom: 55px;
   right: 15px;
   color: white;
+  text-shadow: 2px 2px 3px black;
 }
 
 .fa-pen {
