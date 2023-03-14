@@ -5,6 +5,7 @@ class TripsController < ApplicationController
     @user = current_user
     if params[:query].present?
       @trips = Trip.where(user: current_user).search_by_title_and_location(params[:query]).order('departure ASC')
+      params.delete :query
     else
       @trips = Trip.where(user: current_user).order('departure ASC')
     end
@@ -17,6 +18,7 @@ class TripsController < ApplicationController
     if params[:query].present?
       user = User.find_by(email: params[:query])
       Friend.create(user: user, trip: @trip)
+      params.delete :query
     end
 
     @friends = @trip.friends
