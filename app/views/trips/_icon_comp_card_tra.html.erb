@@ -1,0 +1,17 @@
+<div class="card-icon">
+  <% if transportation.flight? %>
+    <i class='fa-solid fa-plane'></i>
+  <% elsif transportation.train? %>
+    <i class='fa-solid fa-train'></i>
+  <% elsif transportation.boat?%>
+    <i class='fa-solid fa-ship'></i>
+  <% elsif transportation.train?%>
+    <i class='fa-solid fa-train'></i>
+  <% elsif transportation.bike?%>
+    <i class='fa-solid fa-bicycle'></i>
+  <% elsif transportation.caravan?%>
+    <i class='fa-solid fa-caravan'></i>
+  <% else %>
+    <i class='fa-solid fa-car'></i>
+  <% end %>
+</div>

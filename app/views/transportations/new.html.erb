@@ -4,6 +4,7 @@
       <i class="fa-solid fa-arrow-left" id="back_button"></i>
   <% end %>
   <h1 class="text-center fs-1 py-4" id="transportation_ride">Add your ride</h1>
+
   <%= simple_form_for [@trip, @transportation] do |f| %>
   <div class="transport_mode-wrapper py-3">
     <input type="hidden" name="transportation[transport_mode]" value="" autocomplete="off">

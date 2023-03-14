@@ -1,0 +1,15 @@
+<div class="card-icon">
+  <% if accommodation.hotel? %>
+    <i class='fa-solid fa-hotel'></i>
+  <% elsif accommodation.hostel? %>
+    <i class='fa-solid fa-bed'></i>
+  <% elsif accommodation.appartment?%>
+    <i class='fa-solid fa-building'></i>
+  <% elsif accommodation.airbnb?%>
+    <i class='fa-brands fa-airbnb'></i>
+  <% elsif accommodation.camping?%>
+    <i class='fa-solid fa-campground'></i>
+  <% else %>
+    <i class='fa-solid fa-chess-rook'></i>
+  <% end %>
+</div>
