@@ -164,7 +164,7 @@
       </div>
       <div class="modal-body">
         <div class="pdfs">
-          <% if !@trip.transportations.last.nil?  %>x
+          <% if !@trip.transportations.last.nil?  %>
             <%= cl_image_tag @trip.transportations.last.photo.key, format: :jpeg, height: 300, crop: :fill %>
           <% end %>
         </div>
