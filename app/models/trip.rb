@@ -1,9 +1,9 @@
 class Trip < ApplicationRecord
   belongs_to :user
-  has_many :transportations
-  has_many :accommodations
-  has_many :activities
-  has_many :friends
+  has_many :transportations, dependent: :destroy
+  has_many :accommodations, dependent: :destroy
+  has_many :activities, dependent: :destroy
+  has_many :friends, dependent: :destroy
   has_one_attached :photo
 
   geocoded_by :location
