@@ -7,6 +7,8 @@ class Accommodation < ApplicationRecord
 
   validates :departure, presence: true
   validates :return_day, presence: true
+  validates :accommodation_mode, presence: true
+  validates :location, presence: true
 
   validate :at_least_one_field_present
 

@@ -10,7 +10,7 @@ class Transportation < ApplicationRecord
   validates :transport_mode, presence: true
   validates :location, presence: true
 
-  enum transport_mode: { flight: 0, train: 1, boat: 2, bike: 3, car: 4 }
+  enum transport_mode: { flight: 0, train: 1, boat: 2, bike: 3, caravan: 4, car: 5 }
 
   CATEGORIES = [["flight", "<i class='fa-solid fa-plane'></i>"],
                 ["train", "<i class='fa-solid fa-train'></i>"],

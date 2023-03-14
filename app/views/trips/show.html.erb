@@ -86,18 +86,21 @@
       <% @components.each do |comp| %>
         <% if comp.class.to_s == "Transportation" %>
           <div class="comp-card-info-tra">
+            <%= render "trips/icon_comp_card_tra", transportation:comp %>
             <p><span><strong> <%= comp.departure.strftime("%B %e")  %> </span> - <span> <%= comp.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
             <p>📍 <%= comp.location  %> </p>
             <%# <p> <%= comp.booking_ref  %>
           </div>
         <% elsif comp.class.to_s == "Accommodation" %>
           <div class="comp-card-info-acc">
+            <%= render "trips/icon_comp_card_acc", accommodation:comp %>
             <p><span><strong> <%= comp.departure.strftime("%B %e")  %> </span> - <span> <%= comp.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
             <p>📍 <%= comp.location  %> </p>
             <%# <p> <%= comp.booking_ref  %>
           </div>
         <% else %>
           <div class="comp-card-info-act">
+            <i class="fa-solid fa-child-reaching card-icon"></i>
             <p> <%= comp.name  %> </p>
             <p><strong> <%= comp.date.strftime("%B %e, %Y")  %></strong></p>
             <p><span><strong> <%= comp.start_time.strftime("%l:%M %p")  %> </span> - <span> <%= comp.end_time.strftime("%l:%M %p")  %></strong> </span></p>
