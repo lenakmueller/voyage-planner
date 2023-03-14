@@ -1,0 +1,7 @@
+<div class="transportation_form">
+  <%= link_to trip_path(@trip), class: "d-flex justify-content-start text-decoration-none" do %>
+      <i class="fa-solid fa-arrow-left" id="back_button"></i>
+  <% end %>
+  <h1 class="text-center fs-1 py-4" id="transportation_ride">Add your ride</h1>
+  <%= render "form_tra", transportation: @transportation, trip: @trip %>
+</div>
