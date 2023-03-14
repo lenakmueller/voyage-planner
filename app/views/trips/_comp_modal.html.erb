@@ -1,0 +1,14 @@
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="pdfs">
+          <% if comp.photo.attached? %>
+            <%= cl_image_tag comp.photo.key, format: :jpg, height: 300, crop: :fill %>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary rounded-4" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>

@@ -87,6 +87,14 @@
       <p class="spaceholder"><i class="fa-regular fa-calendar-plus"></i></p>
     <% else %>
       <% @components.each do |comp| %>
+      <% if comp.photo.attached?  %>
+        <div type="button" class="pdf_button pt-3" data-bs-toggle="modal" data-bs-target="#pdfModal-<%= comp.id %>" >
+          <i class="fa-solid fa-file"></i>
+        </div>
+        <div class="modal fade" id="pdfModal-<%= comp.id %>" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+          <%= render "comp_modal", comp: comp %>
+        </div>
+      <% end %>
         <% if comp.class.to_s == "Transportation" %>
           <div class="comp-card-info-tra">
             <%= link_to "Edit", edit_trip_transportation_path(comp.trip,comp) %>
@@ -150,33 +158,5 @@
       </div>
     </div>
   <%= render "shared/footer" %>
-  </div>
-</div>
-
-
-
-
-
-<div type="button" class="pdf_button pt-3" data-bs-toggle="modal" data-bs-target="#pdfModal">
-  <i class="fa-solid fa-file"></i>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-      </div>
-      <div class="modal-body">
-        <div class="pdfs">
-          <% if !@trip.transportations.last.nil? && @trip.transportations.last.photo.attached? %>x
-            <%= cl_image_tag @trip.transportations.last.photo.key, format: :jpg, height: 300, crop: :fill %>
-          <% end %>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary rounded-4" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
   </div>
 </div>
