@@ -8,19 +8,28 @@
 }
 
 .fa-plus {
-  border: solid;
+  position: absolute;
+  width: 65px;
+  height: 65px;
   background-color: #5A7684;
+  bottom: 0;
   border-radius: 50%;
-  padding: 20px;
-  opacity: 0.7;
-  font-size: 15px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: white;
+  line-height: 65px;
+  text-align: center;
+  font-size: 23px;
 }
 
 .add-trip {
-  text-align: right;
-  // position: relative;
-  // bottom: 55px;
-  // right: 15px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  bottom: 0;
+  right: 0;
+  margin: 35px 25px;
 }
 
 .add-trip a {
