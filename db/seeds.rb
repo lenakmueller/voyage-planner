@@ -10,8 +10,6 @@ james = User.create(first_name: "James", last_name: "Bunyon", nickname: "Jim", e
 anastasiia = User.create(first_name: "Anastasiia", last_name: "Kulachok", nickname: "Cheesecake", email: "anastasiia@gmail.com", password: "password", mobile_number: "00491786655322")
 lena = User.create(first_name: "Lena", last_name: "Müller", nickname: "Colors", email: "lena@gmail.com", password: "password", mobile_number: "00491786655348")
 
-
-
 greece = { title: "Greece 2023", location: "Athens Greece", departure: "23.05.2023", return_day: "02.06.2023", user: fran }
 paris = { title: "Paris in Love", location: "Paris France", departure: "10.02.2023", return_day: "15.02.2023", user: fran }
 canada = { title: "Oh Canada", location: "Vancouver Canada", departure: "10.07.2023", return_day: "31.07.2023", user: fran }
