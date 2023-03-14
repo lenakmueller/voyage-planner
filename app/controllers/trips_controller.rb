@@ -1,8 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[edit update destroy show]
 
-  Friends = []
-
   def index
     @user = current_user
     if params[:query].present?
@@ -16,10 +14,12 @@ class TripsController < ApplicationController
   end
 
   def show
-    @friends = Friends
     if params[:query].present?
-      Friends.push(User.where(email: params[:query]).as_json)
+      user = User.find_by(email: params[:query])
+      Friend.create(user: user, trip: @trip)
     end
+
+    @friends = @trip.friends
 
     @markers = [{
       lat: @trip.latitude,
@@ -44,7 +44,6 @@ class TripsController < ApplicationController
       @markers.push(el)
     end
 
-
     @activities.geocoded.map do |act|
       el = {
         lat: act.latitude,
@@ -54,7 +53,6 @@ class TripsController < ApplicationController
       }
       @markers.push(el)
     end
-
 
     @transportations.geocoded.map do |trans|
       el = {
@@ -67,7 +65,6 @@ class TripsController < ApplicationController
     end
 
     @components.sort_by { |com| com.class.to_s == "Activity" ? com.date : com.departure }
-
   end
 
   def new
