@@ -6,6 +6,7 @@ Trip.destroy_all
 User.destroy_all
 
 
+
 file = URI.open("https://kitt.lewagon.com/placeholder/users/FranRodrigo")
 fran = User.new(first_name: "Fran", last_name: "Rodrigo", nickname: "Muscles", email: "fran@gmail.com", password: "password", mobile_number: "00491786655349")
 fran.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
