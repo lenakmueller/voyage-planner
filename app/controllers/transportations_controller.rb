@@ -15,6 +15,19 @@ class TransportationsController < ApplicationController
     end
   end
 
+  def edit
+    @transportation = Transportation.find(params[:id])
+  end
+
+  def update
+    @transportation = Transportation.find(params[:id])
+    @transportation.update(transportation_params)
+    if params["transport_mode"].nil?
+      @transportation.transport_mode = @transportation.transport_mode
+    end
+    redirect_to trip_path(@transportation.trip)
+  end
+
   private
 
   def set_trip
