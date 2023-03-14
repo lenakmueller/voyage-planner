@@ -33,6 +33,7 @@ class TripsController < ApplicationController
     @transportations = @trip.transportations
 
     @components = [@accommodations, @transportations, @activities].flatten
+    @components.sort_by! { |com| com.class.to_s == "Activity" ? com.date : com.departure }
 
     @accommodations.geocoded.map do |acc|
       el = {
@@ -66,7 +67,6 @@ class TripsController < ApplicationController
       @markers.push(el)
     end
 
-    @components.sort_by { |com| com.class.to_s == "Activity" ? com.date : com.departure }
 
   end
 
