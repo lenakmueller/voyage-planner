@@ -4,7 +4,6 @@
 
 <div class="banner">
   <% if @trip.photo.attached? %>
-    <%#= cl_image_tag @trip.photo.key, class: "banner-img", crop: :fill %>
     <div class="card-category"
          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @trip.photo.key, crop: :fill %>'); background-repeat: no-repeat; background-size: cover; height: 300px; background-position: center;">
     </div>
@@ -14,7 +13,6 @@
   <div class="trip-info">
     <h1><%= @trip.title.upcase %></h1>
     <h2><span> <%= @trip.departure.strftime("%b %d") %> </span> to <span><%= @trip.return_day.strftime("%b %d, %Y") %> </span></h2>
-    <%# <p><%= @trip.notes %></p>
     <p> 📍 <%= @trip.location %></p>
   </div>
   <div class ="edit-trip">
@@ -24,7 +22,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container friends-wrapper">
 
 
 <%# DELETE METHOD %>
@@ -46,13 +44,18 @@
       <i class="fa-solid fa-user-group"></i>
   <% end %>
 
-  <div class="container">
+  <%# <div class="container"> %>
 
-    <div class="friend-list">
+    <div class="friends">
       <% unless @friends.empty? %>
-        <% @friends.each do |friend| %>
-            <li> <%= cl_image_tag friend.user.photo.key, class: "avatar dropdown-toggle" %> </li>
-        <% end %>
+        <ul class="friends-list">
+          <% @friends.each do |friend| %>
+            <li class="friends-item">
+              <%= cl_image_tag friend.user.photo.key, class: "avatar dropdown-toggle" %>
+              <span class="friends-desc">@<%= friend.user.nickname.downcase %></span>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
   </div>
