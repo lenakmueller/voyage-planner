@@ -1,6 +1,13 @@
+
+<%= render "shared/navbar" %>
+
+
 <div class="banner">
   <% if @trip.photo.attached? %>
-    <%= cl_image_tag trip.photo.key, height: 150, width: 500, crop: :fill %>
+    <%#= cl_image_tag @trip.photo.key, class: "banner-img", crop: :fill %>
+    <div class="card-category"
+         style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @trip.photo.key, crop: :fill %>'); background-repeat: no-repeat; background-size: cover; height: 300px; background-position: center;">
+    </div>
   <% else %>
       <img class="banner-img" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" crop= "fill" >
   <% end %>
@@ -8,16 +15,17 @@
     <h1><%= @trip.title.upcase %></h1>
     <h2><span> <%= @trip.departure.strftime("%b %d") %> </span> to <span><%= @trip.return_day.strftime("%b %d, %Y") %> </span></h2>
     <%# <p><%= @trip.notes %></p>
-    <p>📍<%= @trip.location %></p>
+    <p> 📍 <%= @trip.location %></p>
   </div>
   <div class ="edit-trip">
     <%= link_to edit_trip_path(@trip) do %>
-      <i class="fa-solid fa-pen"></i>
+      <i class="fa-solid fa-pen border border-1"></i>
     <% end %>
   </div>
 </div>
 
 <div class="container">
+
 
 <%# DELETE METHOD %>
     <%# <%= link_to "Delete", %>
@@ -28,23 +36,22 @@
 
 
 
-<%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Add a friend to your trip"
-      %>
-      <%= submit_tag "", class: "btn-search" %>
-<i class="fa-solid fa-user-group"></i>
-    <% end %>
+  <%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Add a friend to your trip" %>
+    <%= submit_tag "", class: "btn-search" %>
+      <i class="fa-solid fa-user-group"></i>
+  <% end %>
 
   <div class="container">
-
 
     <div class="friend-list">
       <% if @friends.present? %>
         <% @friends.flatten.each do |friend| %>
           <li> @<%= friend["nickname"].downcase %> </li>
+          <!-- <li> <%#= cl_image_tag friend.photo.key, class: "avatar dropdown-toggle" %> </li> -->
         <% end %>
       <% end %>
     </div>
@@ -71,71 +78,71 @@
     </div>
   </div>
 
-  <div>
-    <h3>Accommodations</h3>
-    <div class="component">
-      <% @accommodations.each do |item| %>
-        <div>
-          <p><span> <%= item.departure.strftime("%B %e %Y")  %> </span> - <span> <%= item.return_day.strftime("%B %e %Y")  %> </span></p>
-          <p> <%= item.booking_ref  %> </p>
-          <p> <%= item.location  %> </p>
-
+  <% if @components.empty? %>
+    <h2 class="spaceholder">START PLANNING</h2>
+    <p class="spaceholder"><i class="fa-regular fa-calendar-plus"></i></p>
+  <% else %>
+    <% @components.each do |comp| %>
+      <% if comp.class.to_s == "Transportation" %>
+        <div class="comp-card-info">
+          <p><span><strong> <%= comp.departure.strftime("%B %e")  %> </span> - <span> <%= comp.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
+          <p>📍 <%= comp.location  %> </p>
+          <%# <p> <%= comp.booking_ref  %>
+        </div>
+      <% elsif comp.class.to_s == "Accommodation" %>
+        <div class="comp-card-info">
+          <p><span><strong> <%= comp.departure.strftime("%B %e")  %> </span> - <span> <%= comp.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
+          <p>📍 <%= comp.location  %> </p>
+          <%# <p> <%= comp.booking_ref  %>
+        </div>
+      <% else %>
+        <div class="comp-card-info">
+          <p> <%= comp.name  %> </p>
+          <p><strong> <%= comp.date.strftime("%B %e, %Y")  %></strong></p>
+          <p><span><strong> <%= comp.start_time.strftime("%l:%M %p")  %> </span> - <span> <%= comp.end_time.strftime("%l:%M %p")  %></strong> </span></p>
+          <p class= "address">📍 <%= comp.location  %> </p>
         </div>
       <% end %>
-    </div>
-  </div>
+    <% end %>
+  <% end %>
 
-  <div>
-    <h3>Activities</h3>
-    <div class="component">
-      <% @activities.each do |item| %>
-        <div>
-          <p> <%= item.name  %> </p>
-          <p> <%= item.booking_ref  %> </p>
-          <p> <%= item.date.strftime("%B %e %Y")  %> </p>
 
-          <p> <%= item.location  %> </p>
-          <p><span> <%= item.start_time.strftime("%l:%M %p")  %> </span> - <span> <%= item.end_time.strftime("%l:%M %p")  %> </span></p>
+  <div data-controller="map"
+       class="modal-parent"
+       data-map-markers-value="<%= @markers.to_json %>"
+       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div style="width: 100%; height: 200px;" data-map-target="smallMap"></div>
 
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <button type="button"
+          class="open-modal"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          data-action="click->map#passPositionToModalMap">
+    <i class="fa-solid fa-arrows-up-down-left-right"></i>
+  </button>
 
-  <div>
-    <h3>Transportations</h3>
-    <div class="component">
-      <% @transportations.each do |item| %>
-        <div>
-          <p><span> <%= item.departure.strftime("%B %e %Y")  %> </span> - <span> <%= item.return_day.strftime("%B %e %Y")  %> </span></p>
-          <p> <%= item.transport_mode  %> </p>
-          <p> <%= item.booking_ref  %> </p>
-          <p> <%= item.location  %> </p>
-
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <div class="modal-map">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Open modal
-      </button>
-
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="map-wrapper" id="map" style="width: 100%; height: 500px;"
-                 data-controller="map"
-                 data-map-markers-value="<%= @markers.to_json %>"
-                 data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <div class="modal fade"
+        data-action="change->map#switchToModalMap"
+        data-action="hide.bs.modal->map#switchToSmallMap"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button type="button"
+                class="close-modal"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"><i class="fa-solid fa-xmark"></i></i></button>
+          <div style="width: 100%; height: 600px;"
+            data-map-target="modalMap"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
           </div>
       </div>
-      </div>
+    </div>
   <%= render "shared/footer" %>
   </div>
-
-  <div style="width: 100%; height: 300px;"
-
-
-    <%# <%= cl_image_tag @trip.transportations.last.photo.key, format: :jpeg, height:150, crop: :fill %>
 </div>
+
+    <%#= cl_image_tag @trip.transportations.last.photo.key, format: :jpeg, height:150, crop: :fill %>
