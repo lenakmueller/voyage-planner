@@ -145,4 +145,30 @@
   </div>
 </div>
 
-    <%#= cl_image_tag @trip.transportations.last.photo.key, format: :jpeg, height:150, crop: :fill %>
+
+
+
+
+<div type="button" class="pdf_button pt-3" data-bs-toggle="modal" data-bs-target="#pdfModal">
+  <i class="fa-solid fa-file"></i>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+        <div class="pdfs">
+          <% if !@trip.transportations.last.nil?  %>x
+            <%= cl_image_tag @trip.transportations.last.photo.key, format: :jpeg, height: 300, crop: :fill %>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary rounded-4" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -77,8 +77,6 @@ group :test do
   gem "webdrivers"
 end
 
-gem "devise"
-
 gem "pg_search"
 
 gem "geocoder"
@@ -86,3 +84,5 @@ gem "geocoder"
 gem "cloudinary"
 
 gem 'bootstrap', '~> 5.1', '>= 5.1.3'
+
+gem "popper_js"
