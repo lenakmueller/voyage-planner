@@ -36,7 +36,8 @@
 
 
 
-  <%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
+  <%= form_with url: trip_path,
+                method: :get, class: "d-flex friend-form" do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
