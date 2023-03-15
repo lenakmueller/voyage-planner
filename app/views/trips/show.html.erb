@@ -180,7 +180,8 @@
     <% end %>
   </div>
 </div>
-
+</div>
+</div>
   <div data-controller="map"
        class="modal-parent"
        data-map-markers-value="<%= @markers.to_json %>"
@@ -194,6 +195,8 @@
           data-action="click->map#passPositionToModalMap">
     <i class="fa-solid fa-arrows-up-down-left-right"></i>
   </button>
+
+  </div>
 
   <div class="modal fade"
         data-action="change->map#switchToModalMap"
@@ -216,4 +219,5 @@
       </div>
     </div>
   </div>
+
   <%= render "shared/footer" %>
