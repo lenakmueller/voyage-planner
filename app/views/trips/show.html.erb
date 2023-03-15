@@ -87,18 +87,25 @@
         <div class="flip-card">
           <div class="card-wrapper">
             <div class="comp-card-info-tra">
-              <%= link_to "Edit", edit_trip_transportation_path(comp.trip,comp) %>
               <%= render "trips/icon_comp_card_tra", transportation:comp %>
               <p><span><strong> <%= comp.departure.strftime("%B %e")  %> </span> - <span> <%= comp.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
               <p>📍 <%= comp.location  %> </p>
             </div>
             <div class="back-side">
-              <p> <%= comp.booking_ref  %> </p>
-              <% if comp.photo.attached?  %>
-                <div type="button" class="pdf_button pt-3" data-bs-toggle="modal" data-bs-target="#pdfModal-<%= comp.id %>" >
-                  <i class="fa-solid fa-file"></i>
-                </div>
-              <% end %>
+              <div class="comp-card-info-tra">
+                <%# <div class ="edit-comp"> %>
+                <%= link_to "Edit", edit_trip_transportation_path(comp.trip,comp) %>
+                    <%# <i class="fa-solid fa-pen border border-1"></i> %>
+                  <%# <% end %>
+                <%# </div>  %>
+                <p><strong>Booking No.</strong> <%= comp.booking_ref  %></p>
+                <p><strong>Notes</strong> <%= comp.notes %></p>
+                <% if comp.photo.attached?  %>
+                  <div type="button" class="pdf_button pt-3" data-bs-toggle="modal" data-bs-target="#pdfModal-<%= comp.id %>" >
+                    <i class="fa-solid fa-file"></i>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -109,18 +116,21 @@
         <div class="flip-card">
           <div class="card-wrapper">
             <div class="comp-card-info-acc">
-              <%= link_to "Edit", edit_trip_accommodation_path(comp.trip,comp) %>
               <%= render "trips/icon_comp_card_acc", accommodation:comp %>
               <p><span><strong> <%= comp.departure.strftime("%B %e")  %> </span> - <span> <%= comp.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
               <p>📍 <%= comp.location  %> </p>
             </div>
             <div class="back-side">
-              <p> <%= comp.booking_ref  %> </p>
-              <% if comp.photo.attached?  %>
-                <div type="button" class="pdf_button pt-3" data-bs-toggle="modal" data-bs-target="#pdfModal-<%= comp.id %>" >
-                  <i class="fa-solid fa-file"></i>
-                </div>
-              <% end %>
+              <div class="comp-card-info-acc">
+                <%= link_to "Edit", edit_trip_accommodation_path(comp.trip,comp) %>
+                <p><strong>Booking No.</strong> <%= comp.booking_ref  %></p>
+                <p><strong>Notes</strong> <%= comp.notes %></p>
+                <% if comp.photo.attached?  %>
+                  <div type="button" class="pdf_button pt-3" data-bs-toggle="modal" data-bs-target="#pdfModal-<%= comp.id %>" >
+                    <i class="fa-solid fa-file"></i>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -131,20 +141,23 @@
           <div class="flip-card">
             <div class="card-wrapper">
               <div class="comp-card-info-act">
-                <%= link_to "Edit", edit_trip_activity_path(comp.trip,comp) %>
                 <i class="fa-solid fa-child-reaching card-icon"></i>
-                <p> <%= comp.name  %> </p>
+                <strong><p> <%= comp.name %> </p></strong>
                 <p><strong> <%= comp.date.strftime("%B %e, %Y")  %></strong></p>
                 <p><span><strong> <%= comp.start_time.strftime("%l:%M %p")  %> </span> - <span> <%= comp.end_time.strftime("%l:%M %p")  %></strong> </span></p>
                 <p>📍 <%= comp.location  %> </p>
               </div>
               <div class="back-side">
-                <p> <%= comp.booking_ref  %> </p>
-                <% if comp.photo.attached?  %>
-                  <div type="button" class="pdf_button pt-3" data-bs-toggle="modal" data-bs-target="#pdfModal-<%= comp.id %>" >
-                   <i class="fa-solid fa-file"></i>
-                  </div>
-                <% end %>
+                <div class="comp-card-info-act">
+                  <%= link_to "Edit", edit_trip_activity_path(comp.trip,comp) %>
+                  <p><strong>Booking No.</strong> <%= comp.booking_ref  %></p>
+                  <p><strong>Notes</strong> <%= comp.notes %></p>
+                  <% if comp.photo.attached?  %>
+                    <div type="button" class="pdf_button pt-3" data-bs-toggle="modal" data-bs-target="#pdfModal-<%= comp.id %>" >
+                    <i class="fa-solid fa-file"></i>
+                    </div>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
