@@ -3,15 +3,21 @@ class TripsController < ApplicationController
 
   def index
     @user = current_user
+    friend_trips = Trip.joins(:friends).where("friends.user_id = ?", current_user.id)
+    my_trips = Trip.where(user: current_user)
+    trips = friend_trips + my_trips
+    @trips = Trip.where(id: trips.pluck(:id))
+
     if params[:query].present?
-      @trips = Trip.where(user: current_user).search_by_title_and_location(params[:query]).order('departure ASC')
+      @trips = @trips.search_by_title_and_location(params[:query])
       params.delete :query
     else
-      @trips = Trip.where(user: current_user).order('departure ASC')
+      @trips
     end
 
     @upcoming = @trips.select { |trip| trip.departure >= Date.today }
     @previous = @trips.select { |trip| trip.departure <= Date.today }
+
   end
 
   def show
