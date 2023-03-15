@@ -47,11 +47,13 @@
 
 .edit-trip {
   text-align: right;
-  position: relative;
   bottom: 55px;
   right: 15px;
   color: white;
   text-shadow: 2px 2px 3px black;
+  position: absolute;
+  top: 8px;
+  right: 16px;
 }
 
 .fa-pen {
