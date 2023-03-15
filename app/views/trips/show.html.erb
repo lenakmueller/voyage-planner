@@ -33,15 +33,15 @@
     <%# <i class="fa-solid fa-trash-can"></i> %>
 
 
-
-  <%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Add a friend to your trip" %>
-    <%= submit_tag "", class: "btn-search" %>
-    <i class="fa-solid fa-user-group"></i>
-  <% end %>
+  <div id="search" class="search d-flex justify-content-center align-items-center">
+    <%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        placeholder: "Add a friend to your trip" %>
+      <%= submit_tag "", class: "btn-search" %>
+      <i class="fa-solid fa-user-group"></i>
+    <% end %>
+  </div>
 
     <div class="friends">
       <% unless @friends.empty? %>
