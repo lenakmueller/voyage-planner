@@ -27,7 +27,7 @@
 }
 
 .accommodation_mode-selector:checked + label {
-  color: black !important;
+  color: white !important;
 }
 
 
@@ -36,7 +36,7 @@
 }
 
 #accommodation_accommodation_mode_hotel:checked + label {
-  background-color: white;
+  background-color: grey;
   border-color: grey;
 }
 
@@ -46,7 +46,7 @@
 }
 
 #accommodation_accommodation_mode_hostel:checked + label {
-  background-color: white;
+  background-color: grey;
   border-color: grey;
 }
 
@@ -56,7 +56,7 @@
 }
 
 #accommodation_accommodation_mode_appartment:checked + label {
-  background-color: white;
+  background-color: grey;
   border-color: grey;
 }
 
@@ -65,7 +65,7 @@
 }
 
 #accommodation_accommodation_mode_airbnb:checked + label {
-  background-color: white;
+  background-color: grey;
   border-color: grey;
 }
 
@@ -74,7 +74,7 @@
 }
 
 #accommodation_accommodation_mode_camping:checked + label {
-  background-color: white;
+  background-color: grey;
   border-color: grey;
 }
 
@@ -83,7 +83,7 @@
 }
 
 #accommodation_accommodation_mode_castle:checked + label {
-  background-color: white;
+  background-color: grey;
   border-color: grey;
 }
 
@@ -95,6 +95,8 @@
   padding: 10px 20px;
   font-size: 16px;
   border-style: none;
+  margin: auto;
+  width: 50%;
 }
 
 .save:hover {

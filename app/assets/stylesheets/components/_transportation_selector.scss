@@ -27,7 +27,7 @@
 }
 
 .transport_mode-selector:checked + label {
-  color: black !important;
+  color: white !important;
 }
 
 
@@ -36,7 +36,7 @@
 }
 
 #transportation_transport_mode_flight:checked + label {
-  background-color: white;
+  background-color: grey;
   border-color: grey;
 }
 
@@ -46,7 +46,7 @@
 }
 
 #transportation_transport_mode_train:checked + label {
-  background-color: white;
+  background-color: grey;
   border-color: grey;
 }
 
@@ -56,7 +56,7 @@
 }
 
 #transportation_transport_mode_boat:checked + label {
-  background-color: white;
+  background-color: grey;
   border-color: gray;
 }
 
@@ -65,7 +65,7 @@
 }
 
 #transportation_transport_mode_bike:checked + label {
-  background-color: white;
+  background-color: grey;
   border-color: grey;
 }
 
@@ -74,7 +74,7 @@
 }
 
 #transportation_transport_mode_car:checked + label {
-  background-color: white;
+  background-color: grey;
   border-color: grey;
 }
 
@@ -83,7 +83,7 @@
 }
 
 #transportation_transport_mode_campervan:checked + label {
-  background-color: white;
+  background-color: grey;
   border-color: grey;
 }
 
