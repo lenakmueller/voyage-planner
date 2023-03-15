@@ -6,7 +6,6 @@
     <%= form_with url: trips_path, method: :get, class: "d-flex form-search" do %>
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control-search",
         placeholder: "Search trips"
       %>
       <%= submit_tag "", class: "btn-search" %>
