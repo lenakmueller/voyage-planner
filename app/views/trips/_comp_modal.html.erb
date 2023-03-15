@@ -3,12 +3,10 @@
       <div class="modal-body">
         <div class="pdfs">
           <% if comp.photo.attached? %>
-            <%= cl_image_tag comp.photo.key, format: :jpg, height: 300, crop: :fill %>
+            <%= cl_image_tag comp.photo.key, format: :jpg, crop: :fill, class: "w-100" %>
           <% end %>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary rounded-4" data-bs-dismiss="modal">Close</button>
-      </div>
+      <button type="button" class="close-pdf" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
     </div>
   </div>

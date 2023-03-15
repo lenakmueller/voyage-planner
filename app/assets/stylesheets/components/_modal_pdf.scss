@@ -1,0 +1,16 @@
+.close-pdf {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 1000;
+  border-radius: 50%;
+  background-color: #5A7684;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: white;
+  font-size: 20px;
+}
