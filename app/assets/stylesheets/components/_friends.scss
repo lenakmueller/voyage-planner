@@ -19,6 +19,7 @@
 .friends-item {
   border: 2px solid white;
   border-radius: 50%;
+
 }
 
 .friends-item:first-child {
@@ -28,6 +29,8 @@
 .friends-item {
   margin-left: -20px;
   position: relative;
+  top: 30px;
+  left: 30px;
 }
 
 .friends-desc {
