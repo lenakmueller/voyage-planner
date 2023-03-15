@@ -34,17 +34,14 @@
 
 
 
-  <%= form_with url: trip_path,
-                method: :get, class: "d-flex friend-form" do %>
+  <%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
       placeholder: "Add a friend to your trip" %>
     <%= submit_tag "", class: "btn-search" %>
-      <i class="fa-solid fa-user-group"></i>
+    <i class="fa-solid fa-user-group"></i>
   <% end %>
-
-  <%# <div class="container"> %>
 
     <div class="friends">
       <% unless @friends.empty? %>
@@ -58,7 +55,6 @@
         </ul>
       <% end %>
     </div>
-  </div>
 
   <div class="floating-container">
     <div class="floating-button"><i class="fa-solid fa-plus"></i></div>
@@ -86,44 +82,80 @@
       <%# <h2 class="spaceholder">START PLANNING</h2> %>
       <p class="spaceholder"><i class="fa-regular fa-calendar-plus"></i></p>
     <% else %>
-      <% @components.each do |comp| %>
-      <% if comp.photo.attached?  %>
-        <div type="button" class="pdf_button pt-3" data-bs-toggle="modal" data-bs-target="#pdfModal-<%= comp.id %>" >
-          <i class="fa-solid fa-file"></i>
+    <% @components.each do |comp| %>
+      <% if comp.class.to_s == "Transportation" %>
+        <div class="flip-card">
+          <div class="card-wrapper">
+            <div class="comp-card-info-tra">
+              <%= link_to "Edit", edit_trip_transportation_path(comp.trip,comp) %>
+              <%= render "trips/icon_comp_card_tra", transportation:comp %>
+              <p><span><strong> <%= comp.departure.strftime("%B %e")  %> </span> - <span> <%= comp.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
+              <p>📍 <%= comp.location  %> </p>
+            </div>
+            <div class="back-side">
+              <p> <%= comp.booking_ref  %> </p>
+              <% if comp.photo.attached?  %>
+                <div type="button" class="pdf_button pt-3" data-bs-toggle="modal" data-bs-target="#pdfModal-<%= comp.id %>" >
+                  <i class="fa-solid fa-file"></i>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
         <div class="modal fade" id="pdfModal-<%= comp.id %>" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
           <%= render "comp_modal", comp: comp %>
         </div>
-      <% end %>
-        <% if comp.class.to_s == "Transportation" %>
-          <div class="comp-card-info-tra">
-            <%= link_to "Edit", edit_trip_transportation_path(comp.trip,comp) %>
-            <%= render "trips/icon_comp_card_tra", transportation:comp %>
-            <p><span><strong> <%= comp.departure.strftime("%B %e")  %> </span> - <span> <%= comp.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
-            <p>📍 <%= comp.location  %> </p>
-            <%# <p> <%= comp.booking_ref  %>
+      <% elsif comp.class.to_s == "Accommodation" %>
+        <div class="flip-card">
+          <div class="card-wrapper">
+            <div class="comp-card-info-acc">
+              <%= link_to "Edit", edit_trip_accommodation_path(comp.trip,comp) %>
+              <%= render "trips/icon_comp_card_acc", accommodation:comp %>
+              <p><span><strong> <%= comp.departure.strftime("%B %e")  %> </span> - <span> <%= comp.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
+              <p>📍 <%= comp.location  %> </p>
+            </div>
+            <div class="back-side">
+              <p> <%= comp.booking_ref  %> </p>
+              <% if comp.photo.attached?  %>
+                <div type="button" class="pdf_button pt-3" data-bs-toggle="modal" data-bs-target="#pdfModal-<%= comp.id %>" >
+                  <i class="fa-solid fa-file"></i>
+                </div>
+              <% end %>
+            </div>
           </div>
-        <% elsif comp.class.to_s == "Accommodation" %>
-          <div class="comp-card-info-acc">
-            <%= link_to "Edit", edit_trip_accommodation_path(comp.trip,comp) %>
-            <%= render "trips/icon_comp_card_acc", accommodation:comp %>
-            <p><span><strong> <%= comp.departure.strftime("%B %e")  %> </span> - <span> <%= comp.return_day.strftime("%B %e, %Y")  %></strong> </span></p>
-            <p>📍 <%= comp.location  %> </p>
-            <%# <p> <%= comp.booking_ref  %>
-          </div>
+        </div>
+        <div class="modal fade" id="pdfModal-<%= comp.id %>" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+          <%= render "comp_modal", comp: comp %>
+        </div>
         <% else %>
-          <div class="comp-card-info-act">
-            <%= link_to "Edit", edit_trip_activity_path(comp.trip,comp) %>
-            <i class="fa-solid fa-child-reaching card-icon"></i>
-            <p> <%= comp.name  %> </p>
-            <p><strong> <%= comp.date.strftime("%B %e, %Y")  %></strong></p>
-            <p><span><strong> <%= comp.start_time.strftime("%l:%M %p")  %> </span> - <span> <%= comp.end_time.strftime("%l:%M %p")  %></strong> </span></p>
-            <p>📍 <%= comp.location  %> </p>
+          <div class="flip-card">
+            <div class="card-wrapper">
+              <div class="comp-card-info-act">
+                <%= link_to "Edit", edit_trip_activity_path(comp.trip,comp) %>
+                <i class="fa-solid fa-child-reaching card-icon"></i>
+                <p> <%= comp.name  %> </p>
+                <p><strong> <%= comp.date.strftime("%B %e, %Y")  %></strong></p>
+                <p><span><strong> <%= comp.start_time.strftime("%l:%M %p")  %> </span> - <span> <%= comp.end_time.strftime("%l:%M %p")  %></strong> </span></p>
+                <p>📍 <%= comp.location  %> </p>
+              </div>
+              <div class="back-side">
+                <p> <%= comp.booking_ref  %> </p>
+                <% if comp.photo.attached?  %>
+                  <div type="button" class="pdf_button pt-3" data-bs-toggle="modal" data-bs-target="#pdfModal-<%= comp.id %>" >
+                   <i class="fa-solid fa-file"></i>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="pdfModal-<%= comp.id %>" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+            <%= render "comp_modal", comp: comp %>
           </div>
         <% end %>
       <% end %>
     <% end %>
   </div>
+</div>
 
   <div data-controller="map"
        class="modal-parent"
@@ -152,13 +184,12 @@
                 class="close-modal"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"><i class="fa-solid fa-xmark"></i></i></button>
-          <div style="width: 100%; height: 600px;"
+        <div style="width: 100%; height: 600px;"
             data-map-target="modalMap"
             data-map-markers-value="<%= @markers.to_json %>"
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-          </div>
+        </div>
       </div>
     </div>
-  <%= render "shared/footer" %>
   </div>
-</div>
+  <%= render "shared/footer" %>
