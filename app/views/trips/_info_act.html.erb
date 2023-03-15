@@ -1,3 +1,4 @@
-<p><%= act.name %></p>
-<p><%= act.date.strftime("%B %e %Y") %></p>
+<strong><p><%= act.name.upcase %></p></strong>
+<p><%= act.date.strftime("%B %e, %Y") %></p>
 <p><%= act.start_time.strftime("%l:%M %p") %></p>
+<p> 📍 <%= act.location %></p>

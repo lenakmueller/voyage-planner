@@ -10,7 +10,7 @@
         <i class="fa-solid fa-circle-user" id="navbarDropdown" data-bs-toggle="dropdown"></i>
       <% end %>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-        <%= link_to "Add a trip", new_trip_path, class: "dropdown-item" %>
+        <%# <%= link_to "Add a trip", new_trip_path, class: "dropdown-item" %> %>
         <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
       </div>
     <% else %>
