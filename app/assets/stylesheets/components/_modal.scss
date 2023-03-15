@@ -6,10 +6,17 @@
   right: 5px;
   z-index: 1000;
   border-radius: 50%;
+  background-color: #5A7684;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
 }
 
-.fa-xmark {
+.fa-xmark,
+.fa-arrows-up-down-left-right {
   font-size: 20px;
+  color: white;
 }
 
 .modal-parent {
@@ -23,9 +30,9 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: white;
-}
-
-.fa-arrows-up-down-left-right {
-  font-size: 20px;
+  background-color: #5A7684;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
 }
