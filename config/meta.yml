@@ -1,0 +1,5 @@
+meta_product_name: "Voyage Planner"
+meta_title: "Voyage Planner - The All-In-One Travel Application"
+meta_description: "Planning a vacation has never been this easy"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
