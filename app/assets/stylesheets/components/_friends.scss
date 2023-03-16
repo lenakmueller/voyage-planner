@@ -1,11 +1,11 @@
-.friends-wrapper {
+.wrapper-for-render-friends {
   position: relative;
 }
 
 .friends {
   position: absolute;
-  top: -65px;
-  right: 70px;
+  bottom: 80px;
+  right: 50px;
 }
 
 .friends-list {
@@ -28,7 +28,6 @@
 .friends-item {
   margin-left: -20px;
   position: relative;
-  top: 30px;
   left: 30px;
 }
 
