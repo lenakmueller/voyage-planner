@@ -92,3 +92,58 @@ end
   trans.save!
   puts "Created #{trans.booking_ref}"
 end
+
+
+sevilla = Trip.where(location: "Sevilla").first
+
+acc_sevilla = { departure: "19.09.2023", booking_ref: "AA123", location: "Triana, Edinburgh, City of Edinburgh, Scotland", return_day: "24.09.2023", notes: "", trip: sevilla }
+act_sevilla = { name: "Los Pacos", booking_ref: "Dinner", date: "20.09.2023", location: "Santa Cruz, Seville, Seville, Spain", start_time: "21:00", end_time: "22:30", notes: "", trip: sevilla }
+trans_sevilla = { departure: "19.09.2023", transport_mode: 1, booking_ref: "qwe123", location: "Nervión, Seville, Seville, Spain", notes: ".", return_day: "24.09.2023", trip: sevilla }
+act_sevilla2 = { name: "El Sella", booking_ref: "Lunch", date: "21.09.2023", location: "Calle Triana, Seville, Seville, Spain", start_time: "15:00", end_time: "16:30", notes: "", trip: sevilla }
+trans_sevilla2 = { departure: "23.09.2023", transport_mode: 3, booking_ref: "FRG458", location: "Macarena, Seville, Seville, Spain", notes: "", return_day: "24.09.2023", trip: sevilla }
+
+[acc_sevilla].each do |attributes|
+  acc = Accommodation.new(attributes)
+  acc.save!
+  puts "Created #{acc.booking_ref}"
+end
+
+[act_sevilla, act_sevilla2].each do |attributes|
+  act = Activity.new(attributes)
+  act.save!
+  puts "Created #{act.booking_ref}"
+end
+
+[trans_sevilla, trans_sevilla2].each do |attributes|
+  trans = Transportation.new(attributes)
+  trans.save!
+  puts "Created #{trans.booking_ref}"
+end
+
+
+
+scotland = Trip.where(location: "Edinburgh").first
+
+acc_scotland = { departure: "10.11.2022", booking_ref: "GBD173", location: "Canongate, Edinburgh, EH8 8DD, United Kingdom", return_day: "15.11.2022", notes: "", trip: scotland }
+act_scotland = { name: "The Scottish Engineer", booking_ref: "Dinner", date: "12.11.2022", location: "Queen Street,Edinburgh, EH2 1JX,United Kingdom", start_time: "18:00", end_time: "20:30", notes: "", trip: scotland }
+trans_scotland = { departure: "11.11.2022", transport_mode: 1, booking_ref: "BUV856", location: "South Bridge,Edinburgh, EH1 1LL,United Kingdom", notes: ".", return_day: "14.11.2022", trip: scotland }
+act_scotland2 = { name: "The Ben Nevis", booking_ref: "Lunch", date: "21.09.2023", location: "Leith Street,Edinburgh, EH1 3AT,United Kingdom", start_time: "13:00", end_time: "14:30", notes: "", trip: scotland }
+trans_scotland2 = { departure: "15.11.2022", transport_mode: 2, booking_ref: "HFG647", location: "Stockbridge,EH4 1LY,Edinburgh,City of Edinburgh,Scotland,United Kingdom", notes: "", return_day: "15.11.2022", trip: scotland }
+
+[acc_scotland].each do |attributes|
+  acc = Accommodation.new(attributes)
+  acc.save!
+  puts "Created #{acc.booking_ref}"
+end
+
+[act_scotland, act_scotland2].each do |attributes|
+  act = Activity.new(attributes)
+  act.save!
+  puts "Created #{act.booking_ref}"
+end
+
+[trans_scotland, trans_scotland2].each do |attributes|
+  trans = Transportation.new(attributes)
+  trans.save!
+  puts "Created #{trans.booking_ref}"
+end
