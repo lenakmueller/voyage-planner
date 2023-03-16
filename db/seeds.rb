@@ -92,3 +92,30 @@ end
   trans.save!
   puts "Created #{trans.booking_ref}"
 end
+
+
+sevilla = Trip.where(location: "Sevilla").first
+
+acc_sevilla = { departure: "19.09.2022", booking_ref: "AA123", location: "Triana, Seville, Seville, Spain", return_day: "24.09.2023", notes: "", trip: sevilla }
+act_sevilla = { name: "Los Pacos", booking_ref: "Dinner", date: "20.09.2023", location: "Santa Cruz, Seville, Seville, Spain", start_time: "18:00", end_time: "20:30", notes: "", trip: sevilla }
+trans_sevilla = { departure: "19.09.2023", transport_mode: 1, booking_ref: "qwe123", location: "Nervión, Seville, Seville, Spain", notes: ".", return_day: "24.09.2022", trip: sevilla }
+act_sevilla2 = { name: "El Sella", booking_ref: "Lunch", date: "21.09.2023", location: "Calle Triana, Seville, Seville, Spain", start_time: "15:00", end_time: "16:30", notes: "", trip: sevilla }
+trans_sevilla2 = { departure: "23.09.2023", transport_mode: 3, booking_ref: "FRG458", location: "Macarena, Seville, Seville, Spain", notes: "", return_day: "24.09.2022", trip: sevilla }
+
+[acc_sevilla].each do |attributes|
+  acc = Accommodation.new(attributes)
+  acc.save!
+  puts "Created #{acc.booking_ref}"
+end
+
+[act_sevilla, act_sevilla2].each do |attributes|
+  act = Activity.new(attributes)
+  act.save!
+  puts "Created #{act.booking_ref}"
+end
+
+[trans_sevilla, trans_sevilla2].each do |attributes|
+  trans = Transportation.new(attributes)
+  trans.save!
+  puts "Created #{trans.booking_ref}"
+end
