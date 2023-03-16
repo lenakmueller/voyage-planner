@@ -99,45 +99,44 @@
   </div>
 </div>
 
-<div>
-      <div data-controller="map"
-            class="modal-parent"
+
+<div data-controller="map"
+      class="modal-parent"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div style="width: 100%; height: 200px;" data-map-target="smallMap"></div>
+
+  <button type="button"
+          class="open-modal"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          data-action="click->map#passPositionToModalMap">
+    <i class="fa-solid fa-arrows-up-down-left-right"></i>
+  </button>
+
+  <div class="modal fade"
+        data-action="change->map#switchToModalMap"
+        data-action="hide.bs.modal->map#switchToSmallMap"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button type="button"
+                class="close-modal"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+          <i class="fa-solid fa-xmark map-close"></i></i>
+        </button>
+        <div style="width: 100%; height: 600px;"
+            data-map-target="modalMap"
             data-map-markers-value="<%= @markers.to_json %>"
             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        <div style="width: 100%; height: 200px;" data-map-target="smallMap"></div>
-
-
-      <button type="button"
-              class="open-modal"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-              data-action="click->map#passPositionToModalMap">
-        <i class="fa-solid fa-arrows-up-down-left-right"></i>
-      </button>
-    </div>
-      <div class="modal fade"
-            data-action="change->map#switchToModalMap"
-            data-action="hide.bs.modal->map#switchToSmallMap"
-            id="exampleModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <button type="button"
-                    class="close-modal"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"><i class="fa-solid fa-xmark map-close"></i></i>
-            </button>
-            <div style="width: 100%; height: 600px;"
-                data-map-target="modalMap"
-                data-map-markers-value="<%= @markers.to_json %>"
-                data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-            </div>
-          </div>
         </div>
       </div>
+    </div>
+  </div>
 </div>
-
 
 <%= render "shared/footer" %>
