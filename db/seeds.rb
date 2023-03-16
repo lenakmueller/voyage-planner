@@ -94,7 +94,7 @@ end
 end
 
 
-sevilla = Trip.where(location: "Edinburgh").first
+sevilla = Trip.where(location: "Sevilla").first
 
 acc_sevilla = { departure: "19.09.2023", booking_ref: "AA123", location: "Triana, Edinburgh, City of Edinburgh, Scotland", return_day: "24.09.2023", notes: "", trip: sevilla }
 act_sevilla = { name: "Los Pacos", booking_ref: "Dinner", date: "20.09.2023", location: "Santa Cruz, Seville, Seville, Spain", start_time: "21:00", end_time: "22:30", notes: "", trip: sevilla }
@@ -122,7 +122,7 @@ end
 
 
 
-scotland = Trip.where(location: "Sevilla").first
+scotland = Trip.where(location: "Edinburgh").first
 
 acc_scotland = { departure: "10.11.2022", booking_ref: "GBD173", location: "Canongate, Edinburgh, EH8 8DD, United Kingdom", return_day: "15.11.2022", notes: "", trip: scotland }
 act_scotland = { name: "The Scottish Engineer", booking_ref: "Dinner", date: "12.11.2022", location: "Queen Street,Edinburgh, EH2 1JX,United Kingdom", start_time: "18:00", end_time: "20:30", notes: "", trip: scotland }
