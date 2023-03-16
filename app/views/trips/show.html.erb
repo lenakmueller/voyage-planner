@@ -1,35 +1,36 @@
 
 <%= render "shared/navbar" %>
 
-<div class="wrapper-for-render-friends">
-  <div class="banner">
-    <% if @trip.photo.attached? %>
-      <div class="card-category"
-          style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%= cl_image_path @trip.photo.key, crop: :fill %>'); background-repeat: no-repeat; background-size: cover; height: 300px; background-position: center;">
-      </div>
-    <% else %>
-        <img class="banner-img" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" crop= "fill" >
-    <% end %>
-    <div class="trip-info">
-      <h1><%= @trip.title.upcase %></h1>
-      <h2><span> <%= @trip.departure.strftime("%b %d") %> </span> to <span><%= @trip.return_day.strftime("%b %d, %Y") %> </span></h2>
-      <p> 📍 <%= @trip.location %></p>
+<div class="banner">
+  <% if @trip.photo.attached? %>
+    <div class="card-category"
+         style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%= cl_image_path @trip.photo.key, crop: :fill %>'); background-repeat: no-repeat; background-size: cover; height: 300px; background-position: center;">
     </div>
-    <div class ="edit-trip">
-      <%= link_to edit_trip_path(@trip) do %>
-        <i class="fa-solid fa-pen border border-1"></i>
-      <% end %>
-    </div>
+  <% else %>
+      <img class="banner-img" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" crop= "fill" >
+  <% end %>
+  <div class="trip-info">
+    <h1><%= @trip.title.upcase %></h1>
+    <h2><span> <%= @trip.departure.strftime("%b %d") %> </span> to <span><%= @trip.return_day.strftime("%b %d, %Y") %> </span></h2>
+    <p> 📍 <%= @trip.location %></p>
   </div>
+  <div class ="edit-trip">
+    <%= link_to edit_trip_path(@trip) do %>
+      <i class="fa-solid fa-pen border border-1"></i>
+    <% end %>
+  </div>
+</div>
+
+<div class="wrapper-for-render-friends">
 
   <div id="search" class="search d-flex justify-content-center align-items-center">
-      <%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          placeholder: "Add a friend" %>
-        <%= submit_tag "", class: "btn-search" %>
-        <i class="fa-solid fa-user-group"></i>
-      <% end %>
+    <%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        placeholder: "Add a friend" %>
+      <%= submit_tag "", class: "btn-search" %>
+      <i class="fa-solid fa-user-group"></i>
+    <% end %>
   </div>
 
   <div class="friends">
@@ -44,28 +45,29 @@
       </ul>
     <% end %>
   </div>
+
 </div>
 
-  <div class="floating-container">
-    <div class="floating-button"><i class="fa-solid fa-plus"></i></div>
-    <div class="element-container">
-        <span class="float-element tooltip-left">
-          <%= link_to new_trip_activity_path(@trip) do %>
-            <i class="fa-solid fa-child-reaching"></i>
-          <% end %>
-        </span>
-        <span class="float-element">
-          <%= link_to new_trip_transportation_path(@trip) do %>
-            <i class="fa-solid fa-sailboat"></i>
-          <% end %>
-        </span>
-        <span class="float-element">
-          <%= link_to new_trip_accommodation_path(@trip) do %>
-            <i class="fa-solid fa-bed"></i>
-          <% end %>
+<div class="floating-container">
+  <div class="floating-button"><i class="fa-solid fa-plus"></i></div>
+  <div class="element-container">
+      <span class="float-element tooltip-left">
+        <%= link_to new_trip_activity_path(@trip) do %>
+          <i class="fa-solid fa-child-reaching"></i>
+        <% end %>
       </span>
-    </div>
+      <span class="float-element">
+        <%= link_to new_trip_transportation_path(@trip) do %>
+          <i class="fa-solid fa-sailboat"></i>
+        <% end %>
+      </span>
+      <span class="float-element">
+        <%= link_to new_trip_accommodation_path(@trip) do %>
+          <i class="fa-solid fa-bed"></i>
+        <% end %>
+    </span>
   </div>
+</div>
 
 <div class="container">
   <div class="box">
@@ -73,9 +75,7 @@
       <h2 class="spaceholder">START PLANNING</h2>
       <p class="spaceholder"><i class="fa-regular fa-calendar-plus"></i></p>
     <% else %>
-    <ul class="components-list">
       <% @components.each do |comp| %>
-      <li>
         <% if comp.class.to_s == "Transportation" %>
           <%= render "transportations/flip_card_tra", comp: comp %>
           <div class="modal fade" id="pdfModal-<%= comp.id %>" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
@@ -92,9 +92,7 @@
             <%= render "comp_modal", comp: comp %>
           </div>
         <% end %>
-      </li>
       <% end %>
-      </ul>
     <% end %>
   </div>
 </div>
