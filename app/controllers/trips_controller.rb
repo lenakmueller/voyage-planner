@@ -72,7 +72,7 @@ class TripsController < ApplicationController
       @markers.push(el)
     end
 
-    @components.sort_by { |com| com.class.to_s == "Activity" ? com.date : com.departure }
+    # @components.sort_by { |com| com.class.to_s == "Activity" ? com.date : com.departure }
 
   end
 
