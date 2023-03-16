@@ -28,7 +28,7 @@
     <%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
       <%= text_field_tag :query,
         params[:query],
-        placeholder: "Add a friend to your trip" %>
+        placeholder: "Add a friend" %>
       <%= submit_tag "", class: "btn-search" %>
       <i class="fa-solid fa-user-group"></i>
     <% end %>
