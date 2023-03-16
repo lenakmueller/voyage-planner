@@ -1,36 +1,35 @@
 
 <%= render "shared/navbar" %>
 
-<div class="banner">
-  <% if @trip.photo.attached? %>
-    <div class="card-category"
-         style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%= cl_image_path @trip.photo.key, crop: :fill %>'); background-repeat: no-repeat; background-size: cover; height: 300px; background-position: center;">
-    </div>
-  <% else %>
-      <img class="banner-img" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" crop= "fill" >
-  <% end %>
-  <div class="trip-info">
-    <h1><%= @trip.title.upcase %></h1>
-    <h2><span> <%= @trip.departure.strftime("%b %d") %> </span> to <span><%= @trip.return_day.strftime("%b %d, %Y") %> </span></h2>
-    <p> 📍 <%= @trip.location %></p>
-  </div>
-  <div class ="edit-trip">
-    <%= link_to edit_trip_path(@trip) do %>
-      <i class="fa-solid fa-pen border border-1"></i>
+<div class="wrapper-for-render-friends">
+  <div class="banner">
+    <% if @trip.photo.attached? %>
+      <div class="card-category"
+          style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%= cl_image_path @trip.photo.key, crop: :fill %>'); background-repeat: no-repeat; background-size: cover; height: 300px; background-position: center;">
+      </div>
+    <% else %>
+        <img class="banner-img" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" crop= "fill" >
     <% end %>
+    <div class="trip-info">
+      <h1><%= @trip.title.upcase %></h1>
+      <h2><span> <%= @trip.departure.strftime("%b %d") %> </span> to <span><%= @trip.return_day.strftime("%b %d, %Y") %> </span></h2>
+      <p> 📍 <%= @trip.location %></p>
+    </div>
+    <div class ="edit-trip">
+      <%= link_to edit_trip_path(@trip) do %>
+        <i class="fa-solid fa-pen border border-1"></i>
+      <% end %>
+    </div>
   </div>
-</div>
-
-
 
   <div id="search" class="search d-flex justify-content-center align-items-center">
-    <%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        placeholder: "Add a friend" %>
-      <%= submit_tag "", class: "btn-search" %>
-      <i class="fa-solid fa-user-group"></i>
-    <% end %>
+      <%= form_with url: trip_path, method: :get, class: "d-flex friend-form" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          placeholder: "Add a friend" %>
+        <%= submit_tag "", class: "btn-search" %>
+        <i class="fa-solid fa-user-group"></i>
+      <% end %>
   </div>
 
   <div class="friends">
@@ -45,6 +44,7 @@
       </ul>
     <% end %>
   </div>
+</div>
 
   <div class="floating-container">
     <div class="floating-button"><i class="fa-solid fa-plus"></i></div>
