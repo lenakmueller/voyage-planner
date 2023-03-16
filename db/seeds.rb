@@ -35,6 +35,14 @@ norway = { title: "Christmas in Norway", location: "Lofoten Norway", departure: 
 patagonia = { title: "Patagonia adventures", location: "Chile", departure: "10.10.2023", return_day: "01.11.2023", user: fran }
 london = { title: "London calling", location: "London", departure: "13.03.2023", return_day: "20.03.2023", user: james }
 
+california = { title: "California Roadtrip", location: "Yosemite-Nationalpark", departure: "30.05.2023", return_day: "10.06.2023", user: lena }
+cologne = { title: "Kölle for Karneval", location: "Köln", departure: "14.02.2023", return_day: "20.02.2023", user: lena }
+scotland = { title: "Scotland 2022", location: "Edinburgh", departure: "10.11.2022", return_day: "15.11.2022", user: lena }
+sevilla = { title: "Sevilla Birthday Trip", location: "Sevilla", departure: "19.09.2022", return_day: "24.09.2022", user: lena }
+nyc = { title: "New York New York", location: "New York City", departure: "01.08.2022", return_day: "10.08.2022", user: lena }
+baltic = { title: "Northern Germany Roadtrip", location: "Greifswald Mecklenburg-Vorpommern, Deutschland", departure: "23.05.2023", return_day: "02.06.2023", user: lena }
+
+
 images = ["https://images.unsplash.com/photo-1523568129082-a8d6c095638e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=694&q=80", "https://images.unsplash.com/photo-1541264161754-445bbdd7de52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80", "https://images.unsplash.com/photo-1511489731872-324afc650052?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80", "https://images.unsplash.com/photo-1552560880-2482cef14240?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=743&q=80", "https://images.unsplash.com/photo-1507272931001-fc06c17e4f43?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80", "https://images.unsplash.com/photo-1546569397-ab326af881f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=678&q=80"]
 
 [greece, paris, canada, copenhagen, norway, patagonia].each_with_index do |attributes, index|
@@ -51,6 +59,14 @@ greece = Trip.first
   # file = URI.open(images[index])
   trip = Trip.new(attributes)
   # trip.photo.attach(io: file, filename: "trip.png", content_type: "image/png")
+  trip.save!
+  puts "Created #{trip.title}"
+end
+
+[california, cologne, scotland, sevilla, nyc, baltic].each_with_index do |attributes, index|
+  file = URI.open(images[index])
+  trip = Trip.new(attributes)
+  trip.photo.attach(io: file, filename: "trip.png", content_type: "image/png")
   trip.save!
   puts "Created #{trip.title}"
 end

@@ -95,6 +95,7 @@
   position: relative;
   display: block;
   border-radius: 50%;
+  border: solid 2px white;
   width: 50px;
   height: 50px;
   margin: 15px auto;
@@ -112,15 +113,15 @@
   font-size: 16px;
 }
 .floating-container .float-element:nth-child(1) {
-  background-color: #5a76844d;
+  background-color: #5A7684;
   box-shadow: 0 20px 20px -10px rgba(90, 118, 132, 0.3);
 }
 .floating-container .float-element:nth-child(2) {
-  background-color: #9FB7B9;
+  background-color: #3A506B;
   box-shadow: 0 20px 20px -10px rgba(159, 183, 185, 1);
 }
 .floating-container .float-element:nth-child(3) {
-  background-color: #5A7684;
+  background-color: #0B132B;
   box-shadow: 0 20px 20px -10px rgba(90, 118, 132, 1);
 }
 
